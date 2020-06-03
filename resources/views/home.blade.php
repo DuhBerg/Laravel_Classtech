@@ -83,6 +83,8 @@
                     Laravel
                 </div>
 
+TO TESTANO BLZ
+
                 <a href="{{ route('site.index') }}">DKWQNDQWPONDWQOHNQDW</a>
 
                 <div class="links">
