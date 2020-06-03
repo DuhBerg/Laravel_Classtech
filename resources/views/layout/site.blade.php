@@ -3,7 +3,7 @@
 @section('titulo')
 
 @section('login')
-@section('registrar')
+@section('cadastrar')
 @section('perfil')
 @section('sair')
 

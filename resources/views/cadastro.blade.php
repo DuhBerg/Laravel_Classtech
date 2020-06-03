@@ -2,14 +2,15 @@
 @section('titulo','Login')
 
 @section('login','Login')
-@section('registrar','Registrar')
+@section('cadastro','Cadastro')
 
 @section('conteudo')
 
         <div class="container">
-          <h3 class="center">kkkkkkkkkkkk</h3>
           <div class="row">
             <form class="form-login" action="{{ route('site.cadastro.criar')}}" method="post">
+              <h3>Cadastro</h3>
+
               {{ csrf_field() }}
 
               <div class="input-field">
@@ -27,7 +28,11 @@
                 <input type="password" name="password">
               </div>
 
-              <button class="btn deep-orange col s12">Entrar</button>
+              <div class="padding-top-buttom">
+                <a href="{{ route('site.login') }}" class="waves-effect waves-light btn indigo lighten-2">Tenho uma conta</a>
+                <button class="waves-effect waves-light btn indigo lighten-2 right">Criar</button>
+              </div>
+
             </form>
           </div>
         </div>
