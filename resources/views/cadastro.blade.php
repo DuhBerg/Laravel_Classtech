@@ -7,7 +7,7 @@
 @section('conteudo')
 
         <div class="container">
-          <h3 class="center">Cadastro</h3>
+          <h3 class="center">kkkkkkkkkkkk</h3>
           <div class="row">
             <form class="form-login" action="{{ route('site.cadastro.criar')}}" method="post">
               {{ csrf_field() }}
