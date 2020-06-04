@@ -34,7 +34,8 @@ Route::group(['middleware'=>'auth'],function(){
 Route::get('/aluno',['as'=>'aluno.index','uses'=>'aluno\alunoController@index']);
 
 Route::get('/professor',['as'=>'professor.index','uses'=>'professor\professorController@index']);
-Route::get('/professor/turmas',['as'=>'professor.turmas','uses'=>'professor\turmaController@index']);
+Route::get('/professor/turmas',['as'=>'professor.turmas.index','uses'=>'professor\turmaController@index']);
+Route::post('/professor/turmas/criar',['as'=>'professor.turmas.criar','uses'=>'professor\turmaController@criar']);
 
 Route::get('/admin',['as'=>'admin.index','uses'=>'admin\adminController@index']);
 

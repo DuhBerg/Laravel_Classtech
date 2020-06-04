@@ -5,4 +5,9 @@
 
 @section('conteudo')
 <h3>Olá Professor!</h3>
+
+
+<a href="{{ route('professor.turmas.index') }}"> <b>CRIAR TURMA</b> </a>
+
+
 @endsection
