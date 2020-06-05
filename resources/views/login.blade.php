@@ -29,8 +29,8 @@
 
         <form action="#">
         <p>
-          <label>
-            <input type="checkbox" />
+          <label class="form-group">
+            <input type="checkbox" name="rememberMe"/>
             <span>Lembrar meus dados</span>
           </label>
         </p>
