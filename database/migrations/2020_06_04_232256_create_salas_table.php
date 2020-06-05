@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTurmasTable extends Migration
+class CreateSalasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateTurmasTable extends Migration
      */
     public function up()
     {
-        Schema::create('turmas', function (Blueprint $table) {
-            $table->string('idTurma', 6)->primary();
-            $table->string('idProfessor');
-            $table->string('disciplina');
-            $table->timestamps();
+        Schema::create('salas', function (Blueprint $table) {
+           $table->id();
+           $table->string('idTurma', 6);
+           $table->string('idAluno');
+           $table->timestamps();
         });
     }
 
@@ -28,12 +28,8 @@ class CreateTurmasTable extends Migration
      *
      * @return void
      */
-
-
-
-
     public function down()
     {
-        Schema::dropIfExists('turmas');
+        Schema::dropIfExists('salas');
     }
 }
