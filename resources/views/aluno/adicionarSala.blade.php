@@ -1,6 +1,6 @@
 @extends('layout.site')
 @section('titulo','Aluno')
-@section('perfil','Aluno')
+@section('perfil',Auth::user()->name)
 @section('sair','Sair')
 
 @section('conteudo')
