@@ -27,7 +27,7 @@ class turmaController extends Controller
           'idProfessor' => $id,
       ]);
 
-    return redirect()->route('professor.turmas.index');
+    return redirect()->route('professor.index');
     }
 
 

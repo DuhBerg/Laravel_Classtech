@@ -7,7 +7,6 @@
 <h3>Olá Professor!</h3>
 
 
-<a href="{{ route('professor.turmas.index') }}"> <b>CRIAR TURMA</b> </a>
 
   <a href="#modal-criar" class="btn modal-trigger waves-effect waves-light indigo lighten-2">Criar turma</a>
 
