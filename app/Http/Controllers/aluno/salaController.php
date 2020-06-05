@@ -29,4 +29,3 @@ class salaController extends Controller
     }
 
 }
-  

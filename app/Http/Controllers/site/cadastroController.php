@@ -16,11 +16,20 @@ class cadastroController extends Controller
 
     public function criar(Request $req)
     {
-      $dados = $req->all();
       try{
-          User::create($dados);
+        $dados = $req->all();
+        $senha = bcrypt($dados['password']);
+        //dd($dados);
+        User::create([
+        'name' => $dados['name'],
+        'email' => $dados['email'],
+        'password' => $senha,
+        'nivel_acesso' => $dados['nivel_acesso'],
+    ]);
           return redirect()->route('site.login');
-        }catch(\Illuminate\Database\QueryException $ex){
+        }
+        catch(\Illuminate\Database\QueryException $ex)
+        {
           return redirect()->route('site.cadastro');
         }
 

@@ -27,6 +27,8 @@
                 <label for="senha">Senha</label>
               </div>
 
+              <input type="hidden" name="nivel_acesso" value="aluno">
+
               <div class="padding-top-buttom">
                 <a href="{{ route('site.login') }}" class="waves-effect waves-light btn indigo lighten-2">Tenho uma conta</a>
                 <button class="waves-effect waves-light btn indigo lighten-2 right">Criar</button>

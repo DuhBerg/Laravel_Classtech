@@ -42,6 +42,7 @@ Route::get('/professor/turmas',['as'=>'professor.turmas.index','uses'=>'professo
 Route::post('/professor/turmas/criar',['as'=>'professor.turmas.criar','uses'=>'professor\turmaController@criar']);
 
 Route::get('/admin',['as'=>'admin.index','uses'=>'admin\adminController@index']);
+Route::post('/admin/criarProf',['as'=>'admin.criarProf','uses'=>'site\cadastroController@criar']);
 
 
 });
