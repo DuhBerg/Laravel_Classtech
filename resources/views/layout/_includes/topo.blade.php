@@ -17,12 +17,6 @@
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
 
-    <script>
-      $(document).ready(function(){
-        $('.sidenav').sidenav();
-      });
-    </script>
-
 
 
     <meta charset="utf-8">
@@ -37,9 +31,9 @@
           <a href="{{ route('site.index') }}" class="brand-logo">Logo</a>
           <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="{{ route('site.login') }}">@yield('login')</a></li>
-            <li><a href="{{ route('site.cadastro') }}">@yield('cadastro')</a></li>
-            <li><a href="{{ route('site.login') }}">@yield('perfil')</a></li>
+            <li class="@yield('login-active')"><a href="{{ route('site.login') }}">@yield('login')</a></li>
+            <li class="@yield('cadastro-active')"><a href="{{ route('site.cadastro') }}">@yield('cadastro')</a></li>
+            <li class="@yield('login-perfil')"><a href="{{ route('site.login') }}">@yield('perfil')</a></li>
             <li><a href="{{ route('login.sair') }}">@yield('sair')</a></li>
           </ul>
         </div>

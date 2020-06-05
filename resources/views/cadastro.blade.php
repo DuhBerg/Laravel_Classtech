@@ -4,6 +4,8 @@
 @section('login','Login')
 @section('cadastro','Cadastro')
 
+@section('cadastro-active','active')
+
 @section('conteudo')
 
           <div class="row">
