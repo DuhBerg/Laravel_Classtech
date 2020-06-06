@@ -6,6 +6,14 @@
 
 @section('login-active','active')
 
+
+@section('navbar')
+
+@include('layout._includes.navbar')
+
+@endsection
+
+
 @section('conteudo')
 
 

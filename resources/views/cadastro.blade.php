@@ -6,6 +6,14 @@
 
 @section('cadastro-active','active')
 
+
+@section('navbar')
+
+@include('layout._includes.navbar')
+
+@endsection
+
+
 @section('conteudo')
 
           <div class="row">

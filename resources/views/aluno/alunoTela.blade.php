@@ -1,7 +1,17 @@
 @extends('layout.site')
 @section('titulo','Aluno')
 @section('perfil',Auth::user()->name)
+@section('email',Auth::user()->email)
 @section('sair','Sair')
+
+
+@section('navbar')
+
+@include('layout._includes.sidenav')
+
+@endsection
+
+
 
 @section('conteudo')
 <h3>Olá Aluno!</h3>

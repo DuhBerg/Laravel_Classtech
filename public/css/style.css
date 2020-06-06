@@ -23,6 +23,14 @@ body{
   padding-top: 15px;
 }
 
+.user-view .background{
+  background-image: linear-gradient(-90deg, #7A7DC4, #8098CF);
+}
+
+ul a .circle{
+  object-fit: cover;
+}
+
 
 /* label focus color */
  .input-field input:focus + label {
