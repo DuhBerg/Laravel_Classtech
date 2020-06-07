@@ -13,10 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
+Route::get('/',['as'=>'site.index','uses'=>'site\siteController@index']);
 Route::get('/index',['as'=>'site.index','uses'=>'site\siteController@index']);
 
 Route::get('/login',['as'=>'site.login','uses'=>'site\loginController@index']);
