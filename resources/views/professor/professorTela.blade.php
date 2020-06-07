@@ -13,7 +13,7 @@
 
 
 @section('conteudo')
-<h3>Olá Professor!</h3>
+<h3>Olá {{Auth::user()->name}}!</h3>
 
 
 
