@@ -6,7 +6,31 @@
 
       <a href="{{ route('site.index') }}" class="brand-logo">Logo</a>
 
-      <a href="#" data-target="slide-out" class="sidenav-trigger right" style="display:block">@yield('perfil')</a>
+
+      <a href="#" data-target="slide-out" class="sidenav-trigger right" style="display:block">
+        <img class="circle btn-sidenav" src="{{$user->foto_perfil}}">
+      </a>
+
+      @if($user->nivel_acesso == 'aluno')
+      <a href="#modal-criar" data-position="bottom" data-tooltip="Entrar em uma turma"
+      class="btn tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 right btn-sidenav">
+        <i class="material-icons">add</i>
+      </a>
+      @endif
+
+      @if($user->nivel_acesso == 'admin')
+      <a href="#modal-criar" data-position="bottom" data-tooltip="Criar um professor"
+      class="btn tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 right btn-sidenav">
+        <i class="material-icons">add</i>
+      </a>
+      @endif
+
+      @if($user->nivel_acesso == 'professor')
+      <a href="#modal-criar" data-position="bottom" data-tooltip="Criar uma turma"
+      class="btn tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 right btn-sidenav">
+        <i class="material-icons">add</i>
+      </a>
+      @endif
 
 </div>
 

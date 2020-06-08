@@ -17,8 +17,6 @@
 
 
 
-  <a href="#modal-criar" class="btn modal-trigger waves-effect waves-light indigo lighten-2">Criar turma</a>
-
   <div class="modal" id="modal-criar">
     <div class="modal-content">
 

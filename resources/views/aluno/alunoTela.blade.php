@@ -20,18 +20,20 @@
 
 
 
-<a href="#modal-criar" class="btn modal-trigger waves-effect waves-light indigo lighten-2">Entrar sala</a>
+
 
 <div class="modal" id="modal-criar">
   <div class="modal-content">
 
-    <h4 class="light">Entrar sala</h4>
+    <h4 class="light">Entrar turma</h4>
 
-    <form style="padding-top:20px;" action="{{ route('aluno.sala.index') }}" method="post">
+    <form style="padding-top:10px;" action="{{ route('aluno.sala.index') }}" method="post">
+
+      <h6>Pergunte ao seu professor o código da sala e digite abaixo.</h6>
 
       {{ csrf_field() }}
 
-    <div class="row">
+    <div style="padding: 10px;" class="row">
       <div class="input-field">
         <input type="text" name="codigo" id="codigo">
         <label for="codigo">Código sala</label>
@@ -47,6 +49,38 @@
     <a class="btn modal-close modal-action waves-effect waves-light indigo lighten-2">Sair</a>
   </div>
 </div>
+
+
+<section>
+
+  <div class="row">
+
+
+    <!-- Fazer foreach aqui!-->
+    <!-- - - INICIO - - -->
+
+    <div class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="http://vetplus.vet.br/wp-content/uploads/2019/12/meme-da-mulher-gritando-com-o-gato-na-mesa-og-1080x630.jpg">
+          <span class="card-title">Lorem Ipsum</span>
+        </div>
+        <div class="card-content">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+        <div class="card-action">
+          <a href="#">Botão</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- - - FIM - - -->
+
+  </div>
+
+</section>
 
 
 <script>

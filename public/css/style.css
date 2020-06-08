@@ -41,3 +41,23 @@ ul a .circle{
    border-bottom: 1px solid #7986cb !important;
    box-shadow: 0 1px 0 0 #7986cb !important
  }
+
+ .btn-sidenav{
+   margin-top: 10px;
+   height: 45px;
+   width: 45px;
+   display:flex;
+   align-items:center;
+   background-color: transparent;
+   object-fit: cover;
+ }
+
+  .btn-sidenav:hover{
+    background-color: #6976c0;
+  }
+
+ @media screen and (max-width: 600px) {
+   .btn-sidenav{
+     margin-top: 5px;
+  }
+}
