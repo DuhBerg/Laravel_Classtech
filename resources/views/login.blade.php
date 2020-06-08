@@ -51,7 +51,7 @@
         @if($errors->any())
         <div class="alert alert-danger">
             @foreach($errors->all() as $error)
-                <p>{{ $error }}</p>
+                <p>e-mail ou senha incorretos!</p>
             @endforeach
         </div>
         @endif

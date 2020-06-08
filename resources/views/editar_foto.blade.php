@@ -45,6 +45,14 @@
       @endforeach
   </div>
   @endif
+<br>
+  @if(session()->has('message'))
+    <div class="alert alert-success" style="margin-left:10px;">
+        {{ session()->get('message') }}
+    </div>
+@endif
+
+
 </form>
 
 

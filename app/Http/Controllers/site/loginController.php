@@ -61,7 +61,7 @@ class loginController extends Controller
         return redirect()->route('admin.index');
       }
       else {
-        return redirect()->route('site.login')->withErrors(['active'=>'Usuário ou senha incorreto!']);
+        return redirect()->route('site.login')->withErrors(['active']);
 
       }
     }catch(\Illuminate\Database\QueryException $ex){
