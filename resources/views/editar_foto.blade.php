@@ -36,6 +36,15 @@
 </div>
 <Br>
   <button class="waves-effect waves-light btn indigo lighten-2 left">Enviar</button>
+  <br>
+
+  @if($errors->any())
+  <div class="alert alert-danger">
+      @foreach($errors->all() as $error)
+          <p>Apenas arquivos de extensão jpg ou png são aceitos!</p>
+      @endforeach
+  </div>
+  @endif
 </form>
 
 

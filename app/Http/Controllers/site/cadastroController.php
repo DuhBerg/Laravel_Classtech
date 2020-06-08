@@ -54,7 +54,8 @@ class cadastroController extends Controller
         }
         catch(\Illuminate\Database\QueryException $ex)
         {
-          return redirect()->route('site.cadastro');
+
+          return redirect()->route('site.cadastro')->withErrors(['active'=>'Esse e-mail já existe!']);
         }
 
 

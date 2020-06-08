@@ -61,11 +61,11 @@ class loginController extends Controller
         return redirect()->route('admin.index');
       }
       else {
-        return redirect()->route('site.cadastro');
+        return redirect()->route('site.login')->withErrors(['active'=>'Usuário ou senha incorreto!']);
 
       }
     }catch(\Illuminate\Database\QueryException $ex){
-      return redirect()->route('site.login');
+      return redirect()->route('site.login')->withErrors(['active'=>'Algo deu muito errado amigo!']);
     }
 
 
