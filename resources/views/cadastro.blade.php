@@ -38,6 +38,7 @@
               </div>
 
               <input type="hidden" name="nivel_acesso" value="aluno">
+              <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
 
               <div class="padding-top-buttom">
                 <a href="{{ route('site.login') }}" class="waves-effect waves-light btn indigo lighten-2">Tenho uma conta</a>

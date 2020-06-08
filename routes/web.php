@@ -22,6 +22,18 @@ Route::post('/login/entrar',['as'=>'site.login.entrar','uses'=>'site\loginContro
 Route::get('/login/sair',['as'=>'login.sair','uses'=>'site\loginController@sair']);
 
 
+
+
+Route::get('/perfil',['as'=>'perfil.index','uses'=>'site\perfilController@index']);
+
+
+Route::get('/perfil/editar-foto',['as'=>'perfil.viewFoto','uses'=>'site\perfilController@viewFoto']);
+Route::post('/perfil/editar-foto/salvar',['as'=>'perfil.viewFoto.salvar','uses'=>'site\perfilController@salvaFoto']);
+
+
+
+
+
 Route::get('/cadastro',['as'=>'site.cadastro','uses'=>'site\cadastroController@index']);
 Route::post('/cadastro/criar',['as'=>'site.cadastro.criar','uses'=>'site\cadastroController@criar']);
 

@@ -48,6 +48,7 @@ class cadastroController extends Controller
         'email' => $dados['email'],
         'password' => $senha,
         'nivel_acesso' => $dados['nivel_acesso'],
+        'foto_perfil' => $dados['foto'],
     ]);
           return redirect()->route('site.login');
         }
