@@ -53,7 +53,7 @@ class perfilController extends Controller
               return redirect()->route('perfil.index');
               }
                 else { //erro se o arquivo nao for .png ou .jpg kkk
-                  return redirect()->route('aluno.index');
+                  echo "deu erro.";
                 }
       }
     }

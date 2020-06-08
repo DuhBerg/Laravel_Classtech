@@ -53,7 +53,10 @@
           <input type="password" name="password" id="senha">
           <label for="senha">Senha</label>
         </div>
+
         <input type="hidden" name="nivel_acesso" value="professor">
+
+        <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
 
 
 

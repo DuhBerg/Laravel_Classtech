@@ -27,7 +27,7 @@
 
     <h4 class="light">Entrar sala</h4>
 
-    <form style="padding-top:20px;" action="{{ route('aluno.sala.index') }}" method="post">
+    <form style="padding-top:20px;" action="{{ route('aluno.sala.criar') }}" method="post">
 
       {{ csrf_field() }}
 
@@ -47,6 +47,22 @@
     <a class="btn modal-close modal-action waves-effect waves-light indigo lighten-2">Sair</a>
   </div>
 </div>
+
+
+
+
+
+@foreach ($salas as $sala)
+
+  <h3>{{$sala->idTurma}}</h3>
+
+@endforeach
+
+
+
+
+
+
 
 
 <script>

@@ -23,7 +23,7 @@ class salaController extends Controller
         'idAluno' => $id,
       ]);
 
-        return redirect()->route('aluno.sala.index');
+        return redirect()->route('aluno.index');
 
 
     }

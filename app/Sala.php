@@ -10,5 +10,5 @@ class Sala extends Model
       'idTurma', 'idAluno',
   ];
 
-  protected $table = "sala";
+  protected $table = "salas";
 }

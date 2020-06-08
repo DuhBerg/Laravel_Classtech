@@ -16,7 +16,7 @@
   <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
       <div class="background"></div>
-        <a href="#user"><img class="circle" src="{{$user->foto_perfil}}"></a>
+        <a href="#user"><img class="circle" src="{{asset($user->foto_perfil)}}"></a>
         <a href="#name"><span class="white-text name">@yield('perfil')</span></a>
         <a href="#email"><span class="white-text email">@yield('email')</span></a>
       </div>
