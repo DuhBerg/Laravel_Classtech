@@ -27,9 +27,11 @@
 
     <h4 class="light">Entrar turma</h4>
 
-    <form style="padding-top:10px;" action="{{ route('aluno.sala.index') }}" method="post">
+    <form style="padding-top:10px;" action="{{ route('aluno.sala.criar') }}" method="post">
 
-      <h6>Pergunte ao seu professor o código da sala e digite abaixo.</h6>
+
+    <h6>Pergunte ao seu professor o código da sala e digite abaixo.</h6>
+
 
       {{ csrf_field() }}
 
@@ -82,6 +84,13 @@
 
 </section>
 
+<!--
+@foreach ($salas as $sala)
+
+  <h3>{{$sala->idTurma}}</h3>
+
+@endforeach
+-->
 
 <script>
   //Modal

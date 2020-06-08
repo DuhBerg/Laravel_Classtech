@@ -13,15 +13,28 @@
 
 
 @section('conteudo')
+
 <h3>Olá {{Auth::user()->name}}!</h3>
 
+@if($errors->any())
+<div class="alert alert-danger">
+    @foreach($errors->all() as $error)
+        <p>{{ $error }}</p>
+    @endforeach
+</div>
+@endif
 
-
-
+<br>
+  @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
 
 
 
 </form>
+
 
 <!--------------------------->
 
@@ -30,6 +43,7 @@
   <div class="modal-content">
 
     <h4 class="light">Criar professor</h4>
+
 
 
       <form style="padding-top:20px;" class="form-login" action="{{ route('admin.criarProf')}}" method="post">
@@ -52,7 +66,13 @@
           <input type="password" name="password" id="senha">
           <label for="senha">Senha</label>
         </div>
+
+
+        <br>
+
         <input type="hidden" name="nivel_acesso" value="professor">
+
+        <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
 
 
 
@@ -67,6 +87,7 @@
     <a class="btn modal-close modal-action waves-effect waves-light indigo lighten-2">Sair</a>
   </div>
 </div>
+
 
 
 <script>
