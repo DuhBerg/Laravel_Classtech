@@ -47,6 +47,14 @@
           <button class="waves-effect waves-light btn indigo lighten-2 right">Entrar</button>
         </div>
         <a href="#" class="font-esqueci-senha">Esqueceu a senha?</a>
+
+        @if($errors->any())
+        <div class="alert alert-danger">
+            @foreach($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+        @endif
       </form>
     </div>
 

@@ -27,8 +27,7 @@ Route::get('/login/sair',['as'=>'login.sair','uses'=>'site\loginController@sair'
 Route::get('/perfil',['as'=>'perfil.index','uses'=>'site\perfilController@index']);
 
 
-Route::get('/perfil/editar-foto',['as'=>'perfil.viewFoto','uses'=>'site\perfilController@viewFoto']);
-Route::post('/perfil/editar-foto/salvar',['as'=>'perfil.viewFoto.salvar','uses'=>'site\perfilController@salvaFoto']);
+
 
 
 
@@ -44,6 +43,8 @@ Route::group(['middleware'=>'auth'],function(){
 Route::get('/aluno',['as'=>'aluno.index','uses'=>'aluno\alunoController@index']);
 Route::post('/aluno/sala/criar',['as'=>'aluno.sala.criar','uses'=>'aluno\salaController@criar']);
 
+Route::get('/perfil/editar-foto',['as'=>'perfil.viewFoto','uses'=>'site\perfilController@viewFoto']);
+Route::post('/perfil/editar-foto/salvar',['as'=>'perfil.viewFoto.salvar','uses'=>'site\perfilController@salvaFoto']);
 
 
 Route::get('/professor',['as'=>'professor.index','uses'=>'professor\professorController@index']);

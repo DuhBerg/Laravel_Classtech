@@ -50,10 +50,10 @@ class perfilController extends Controller
               $id = Auth::user()->id;
 
               User::find($id)->update($dados);
-              return redirect()->route('perfil.index');
+              return redirect()->route('aluno.index');
               }
                 else { //erro se o arquivo nao for .png ou .jpg kkk
-                  echo "deu erro.";
+                  return redirect()->route('perfil.viewFoto')->withErrors(['active']);
                 }
       }
     }

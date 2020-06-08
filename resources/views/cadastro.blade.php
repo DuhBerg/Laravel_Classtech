@@ -16,6 +16,8 @@
 
 @section('conteudo')
 
+
+
           <div class="row">
             <form class="form-login" action="{{ route('site.cadastro.criar')}}" method="post">
               <h3>Cadastro</h3>
@@ -44,6 +46,17 @@
                 <a href="{{ route('site.login') }}" class="waves-effect waves-light btn indigo lighten-2">Tenho uma conta</a>
                 <button class="waves-effect waves-light btn indigo lighten-2 right">Criar</button>
               </div>
+
+                  
+              @if($errors->any())
+              <div class="alert alert-danger">
+                  @foreach($errors->all() as $error)
+                      <p>{{ $error }}</p>
+                  @endforeach
+              </div>
+              @endif
+
+
             </form>
           </div>
 
