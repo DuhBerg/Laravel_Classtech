@@ -12,7 +12,7 @@
       </a>
 
       @if($user->nivel_acesso == 'aluno')
-      <a href="#modal-criar" data-position="bottom" data-tooltip="Entrar em uma turma"
+      <a href="#modal-entrar" data-position="bottom" data-tooltip="Entrar em uma turma"
       class="btn tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 right btn-sidenav">
         <i class="material-icons">add</i>
       </a>
@@ -46,12 +46,13 @@
       </div>
     </li>
 
-    <li><a href="{{ route('site.index') }}"><i class="material-icons">home</i>Home</a></li>
-    <li><a href="{{ route('perfil.index') }}"><i class="material-icons">person</i>Perfil</a></li>
+    <li class="@yield('home-active')"><a href="{{ route('site.index') }}"><i class="material-icons">home</i>Home</a></li>
+    <li class="@yield('perfil-active')"><a href="{{ route('perfil.index') }}"><i class="material-icons">person</i>Perfil</a></li>
     @if($user->nivel_acesso == 'aluno')
-    <li><a href="#!"><i class="material-icons">menu_book</i>Cursos</a></li>
+    <li class="@yield('cursos-active')"><a href="#!"><i class="material-icons">menu_book</i>Cursos</a></li>
+    <li class="@yield('agenda-active')"><a href="#!"><i class="material-icons">calendar_today</i>Agenda</a></li>
     @endif
     <li><div class="divider"></div></li>
-    <li><a href="#!"><i class="material-icons">settings</i>Configuração</a></li>
+    <li class="@yield('config-active')"><a href="#!"><i class="material-icons">settings</i>Configuração</a></li>
     <li><a href="{{ route('login.sair') }}"><i class="material-icons">exit_to_app</i>Sair</a></li>
   </ul>

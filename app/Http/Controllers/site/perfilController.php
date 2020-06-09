@@ -12,15 +12,14 @@ class perfilController extends Controller
     public function index()
     {
       $user = Auth::user(array('id','name','email','nivel_acesso','foto_perfil'));
-      return view('perfil',compact('user'));
+      return view('perfil.perfil',compact('user'));
     }
-
 
 
     public function viewFoto()
     {
       $user = Auth::user(array('id','name','email','nivel_acesso','foto_perfil'));
-      return view('editar_foto',compact('user'));
+      return view('perfil.editar_foto',compact('user'));
     }
 
 

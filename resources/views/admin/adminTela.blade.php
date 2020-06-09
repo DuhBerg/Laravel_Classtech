@@ -3,6 +3,7 @@
 @section('perfil',Auth::user()->name)
 @section('email',Auth::user()->email)
 @section('sair','Sair')
+@section('home-active','active')
 
 
 @section('navbar')
@@ -83,8 +84,8 @@
   <div class="modal-footer">
 
       <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
+      <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
 
-    <a class="btn modal-close modal-action waves-effect waves-light indigo lighten-2">Sair</a>
   </div>
 </div>
 
