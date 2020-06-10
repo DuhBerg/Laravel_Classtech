@@ -40,10 +40,47 @@
       </table>
     </div>
     <div class="col s12 m1 l4 btn-editar-perfil">
-      <a href="{{ route('perfil.viewFoto')}}" class="waves-effect waves-light btn indigo lighten-2 left">Editar</a>
+      <a class="modal-trigger" href="#modal-foto">Editar</a>
     </div>
   </div>
 </div>
+
+
+
+<!-- Modal enviar foto -->
+
+<div class="modal" id="modal-foto">
+  <div class="modal-content">
+
+    <h4 class="light">Alterar foto</h4>
+
+    <form style="padding-top:20px;" action="{{ route('perfil.viewFoto.salvar') }}" method="post" enctype="multipart/form-data">
+
+    {{ csrf_field()}}
+
+
+    <div class="file-field  input-field">
+
+      <div class="btn indigo lighten-2">
+        <span>Selecionar imagem</span>
+        <input type="file" name="imagem">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+
+
+
+  <div class="modal-footer">
+
+      <button class="waves-effect waves-light btn indigo lighten-2">Enviar</button>
+      <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+
+  </div>
+</div>
+
+
 
 
 

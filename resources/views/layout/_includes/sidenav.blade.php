@@ -11,21 +11,24 @@
         <img class="circle btn-sidenav" src="{{$user->foto_perfil}}">
       </a>
 
-      @if($user->nivel_acesso == 'aluno')
+
+
+
+      @if($user->nivel_acesso == 'aluno' && Request::is('aluno'))
       <a href="#modal-entrar" data-position="bottom" data-tooltip="Entrar em uma turma"
       class="btn tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 right btn-sidenav">
         <i class="material-icons">add</i>
       </a>
       @endif
 
-      @if($user->nivel_acesso == 'admin')
+      @if($user->nivel_acesso == 'admin' && Request::is('admin'))
       <a href="#modal-criar" data-position="bottom" data-tooltip="Criar um professor"
       class="btn tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 right btn-sidenav">
         <i class="material-icons">add</i>
       </a>
       @endif
 
-      @if($user->nivel_acesso == 'professor')
+      @if($user->nivel_acesso == 'professor' && Request::is('professor'))
       <a href="#modal-criar" data-position="bottom" data-tooltip="Criar uma turma"
       class="btn tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 right btn-sidenav">
         <i class="material-icons">add</i>

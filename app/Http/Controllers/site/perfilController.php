@@ -56,4 +56,11 @@ class perfilController extends Controller
                 }
       }
     }
+
+
+
+    public function editar_perfil()
+    {
+      return view('perfil.editar-perfil');
+    }
 }
