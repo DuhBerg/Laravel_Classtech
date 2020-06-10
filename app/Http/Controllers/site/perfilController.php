@@ -49,10 +49,10 @@ class perfilController extends Controller
               $id = Auth::user()->id;
 
               User::find($id)->update($dados);
-              return redirect()->route('perfil.viewFoto')->with('message', 'Foto alterada com sucesso!');
+              return redirect()->route('perfil.index')->with('message', 'Foto alterada com sucesso!');
               }
                 else { //erro se o arquivo nao for .png ou .jpg kkk
-                  return redirect()->route('perfil.viewFoto')->withErrors(['active']);
+                  return redirect()->route('perfil.index')->withErrors(['active']);
                 }
       }
     }
