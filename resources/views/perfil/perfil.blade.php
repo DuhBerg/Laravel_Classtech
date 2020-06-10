@@ -49,21 +49,6 @@
 
 </div>
 
-//colocar isso dentro do modal OK?
-@if(session()->has('message'))
-  <div class="alert alert-success" style="margin-left:20px;">
-      {{ session()->get('message') }}
-  </div>
-@endif
-
-@if($errors->any())
-<div class="alert alert-danger">
-    @foreach($errors->all() as $error)
-        <p>Apenas jpg ou png</p>
-    @endforeach
-</div>
-@endif
-//ATÉ AQUI OK
 
 
 
@@ -116,6 +101,7 @@
 
   });
 </script>
+
 
 
 

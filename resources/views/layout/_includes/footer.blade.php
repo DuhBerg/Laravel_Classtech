@@ -16,5 +16,8 @@
 
 </script>
 
+<!-- include do SweetAlert -->
+@include('sweetalert::alert')
+
 </body>
 </html>

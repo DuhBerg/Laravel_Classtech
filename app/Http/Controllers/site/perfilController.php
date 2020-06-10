@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 
+
 class perfilController extends Controller
 {
     public function index()
@@ -44,16 +45,12 @@ class perfilController extends Controller
               $id = Auth::user()->id;
 
               User::find($id)->update($dados);
-<<<<<<< HEAD
-              return redirect()->action('site\perfilController@index')->with('message', 'Foto alterada com sucesso!');
 
+              return back()->with('success', 'Foto alterada com sucesso!');
 
-=======
-              return redirect()->route('perfil.index')->with('message', 'Foto alterada com sucesso!');
->>>>>>> 69cd49745f6d4581c246403a97cda2eeb22b8bf3
               }
                 else { //erro se o arquivo nao for .png ou .jpg kkk
-                  return redirect()->route('perfil.index')->withErrors(['active']);
+                  return back()->with('warning', 'Por favor selecione apenas imagem');
                 }
       }
     }
