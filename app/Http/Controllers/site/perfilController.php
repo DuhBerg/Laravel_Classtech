@@ -16,11 +16,6 @@ class perfilController extends Controller
     }
 
 
-    public function viewFoto()
-    {
-      $user = Auth::user(array('id','name','email','nivel_acesso','foto_perfil'));
-      return view('perfil.editar_foto',compact('user'));
-    }
 
 
     public function salvaFoto(Request $req)
@@ -49,10 +44,12 @@ class perfilController extends Controller
               $id = Auth::user()->id;
 
               User::find($id)->update($dados);
-              return redirect()->route('perfil.viewFoto')->with('message', 'Foto alterada com sucesso!');
+              return redirect()->action('site\perfilController@index')->with('message', 'Foto alterada com sucesso!');
+
+
               }
                 else { //erro se o arquivo nao for .png ou .jpg kkk
-                  return redirect()->route('perfil.viewFoto')->withErrors(['active']);
+                  return redirect()->route('perfil.index')->withErrors(['active']);
                 }
       }
     }

@@ -37,19 +37,39 @@
             <th>Senha</th>
             <td>··············</td>
           </tr>
+
+
       </table>
     </div>
     <div class="col s12 m1 l4 btn-editar-perfil">
-      <a class="modal-trigger" href="#modal-foto">Editar</a>
+      <a class="modal-trigger btn" href="#modal-foto">Editar</a>
     </div>
+
   </div>
+
 </div>
+
+//colocar isso dentro do modal OK?
+@if(session()->has('message'))
+  <div class="alert alert-success" style="margin-left:20px;">
+      {{ session()->get('message') }}
+  </div>
+@endif
+
+@if($errors->any())
+<div class="alert alert-danger">
+    @foreach($errors->all() as $error)
+        <p>Apenas jpg ou png</p>
+    @endforeach
+</div>
+@endif
+//ATÉ AQUI OK
 
 
 
 <!-- Modal enviar foto -->
 
-<div class="modal" id="modal-foto">
+<div class="modal" id="modal-foto" aria-hidden="true">
   <div class="modal-content">
 
     <h4 class="light">Alterar foto</h4>
@@ -69,6 +89,8 @@
         <input class="file-path validate" type="text">
       </div>
     </div>
+
+    <br>
 
 
 
@@ -93,6 +115,9 @@
     $('.modal').modal();
   });
 </script>
+
+
+
 
 
 @endsection
