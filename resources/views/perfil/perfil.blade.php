@@ -25,7 +25,6 @@
     </a>
         <span class="material-icons icon-edit z-depth-1">edit</span>
         <p style="color:#7986cb;font-size:20px;font-weight: 600;">Alterar foto</p>
-      <!-- <a class="modal-trigger btn indigo lighten-2 right" href="#modal-foto">Editar foto</a> -->
     </div>
     <div class="col s12 m12 l8">
       <table class="highlight">
