@@ -42,6 +42,10 @@ ul a .circle{
    box-shadow: 0 1px 0 0 #7986cb !important
  }
 
+ .btn-hover-color:hover{
+   background-color: #6c70b9 !important;
+ }
+
  .btn-sidenav{
    margin-top: 10px;
    height: 45px;
@@ -50,11 +54,13 @@ ul a .circle{
    align-items:center;
    background-color: transparent;
    object-fit: cover;
+   transition-duration: 0.15s;
  }
 
-  .btn-sidenav:hover{
-    background-color: #6976c0;
-  }
+ .btn-sidenav:hover{
+   transition-duration: 0.15s;
+   filter: grayscale(70%);
+ }
 
  @media screen and (max-width: 600px) {
    .btn-sidenav{
@@ -78,31 +84,7 @@ ul a .circle{
   object-fit: cover;
 }
 
-@media screen and (max-width: 600px) {
-  .btn-editar-perfil{
-    margin-top: 15px;
- }
-}
 
-.div-editar-perfil{
-  padding-left: 300px;
-  padding-right: 300px;
-  padding-top: 20px;
-}
-
-@media screen and (max-width: 1100px) {
-  .div-editar-perfil{
-    padding-left: 100px;
-    padding-right: 100px;
- }
-}
-
-@media screen and (max-width: 700px) {
-  .div-editar-perfil{
-    padding-left: 30px;
-    padding-right: 30px;
- }
-}
 
 .highlight tr:hover{
   background-color: #ddd !important;
@@ -112,4 +94,21 @@ ul a .circle{
   height: 60px;
   width: 60px;
   object-fit: cover;
+}
+
+.icon-edit{
+  color: white;
+  background-color: #7986cb;
+  padding: 0.7vh;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.foto-hover{
+  transition-duration: 0.25s;
+}
+
+.foto-hover:hover{
+  transition-duration: 0.25s;
+  filter: grayscale(70%);
 }

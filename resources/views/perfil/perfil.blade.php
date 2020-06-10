@@ -20,31 +20,35 @@
   <h3 class="center">Perfil</h3>
   <div class="div-perfil">
     <div class="col s12 m12 l4 center">
+      <a class="modal-trigger foto-hover" href="#modal-foto">
       <img class="circle foto-perfil z-depth-3" src="{{$user->foto_perfil}}">
+    </a>
+        <span class="material-icons icon-edit z-depth-1">edit</span>
+        <p style="color:#7986cb;font-size:20px;font-weight: 600;">Alterar foto</p>
+      <!-- <a class="modal-trigger btn indigo lighten-2 right" href="#modal-foto">Editar foto</a> -->
     </div>
-    <div class="col s12 m11 l4">
-      <table>
+    <div class="col s12 m12 l8">
+      <table class="highlight">
         <tbody>
-          <tr>
+          <tr onclick="location.href = '#';" style="cursor: pointer;">
             <th>Nome</th>
             <td>{{Auth::user()->name}}</td>
+            <td><span class="material-icons right">keyboard_arrow_right</span></td>
           </tr>
-          <tr>
+          <tr onclick="location.href = '#';" style="cursor: pointer;">
             <th>Email</th>
             <td>{{Auth::user()->email}}</td>
+            <td><span class="material-icons right">keyboard_arrow_right</span></td>
           </tr>
-          <tr>
+          <tr onclick="location.href = '#';" style="cursor: pointer;">
             <th>Senha</th>
-            <td>··············</td>
+            <td>************</td>
+            <td><span class="material-icons right">keyboard_arrow_right</span></td>
           </tr>
 
 
       </table>
     </div>
-    <div class="col s12 m1 l4 btn-editar-perfil">
-      <a class="modal-trigger btn" href="#modal-foto">Editar</a>
-    </div>
-
   </div>
 
 </div>

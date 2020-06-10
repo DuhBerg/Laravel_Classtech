@@ -1,7 +1,6 @@
 <nav>
 
   <div class="nav-wrapper nav-wrapper-color">
-    <div class="row">
 
 
       <a href="{{ route('site.index') }}" class="brand-logo">Logo</a>
@@ -12,29 +11,36 @@
       </a>
 
 
+      <ul class="right">
 
+        @if($user->nivel_acesso == 'aluno' && Request::is('aluno'))
+          <li>
+            <a href="#modal-entrar" data-position="bottom" data-tooltip="Entrar em uma turma"
+            class="tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 transparent btn-hover-color">
+              <i class="material-icons">add</i>
+            </a>
+          </li>
+        @endif
 
-      @if($user->nivel_acesso == 'aluno' && Request::is('aluno'))
-      <a href="#modal-entrar" data-position="bottom" data-tooltip="Entrar em uma turma"
-      class="btn tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 right btn-sidenav">
-        <i class="material-icons">add</i>
-      </a>
-      @endif
+        @if($user->nivel_acesso == 'admin' && Request::is('admin'))
+          <li>
+            <a href="#modal-criar" data-position="bottom" data-tooltip="Criar um professor"
+            class="tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 transparent btn-hover-color">
+              <i class="material-icons">add</i>
+            </a>
+          </li>
+        @endif
 
-      @if($user->nivel_acesso == 'admin' && Request::is('admin'))
-      <a href="#modal-criar" data-position="bottom" data-tooltip="Criar um professor"
-      class="btn tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 right btn-sidenav">
-        <i class="material-icons">add</i>
-      </a>
-      @endif
+        @if($user->nivel_acesso == 'professor' && Request::is('professor'))
+          <li>
+            <a href="#modal-criar" data-position="bottom" data-tooltip="Criar uma turma"
+            class="tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 transparent btn-hover-color">
+              <i class="material-icons">add</i>
+            </a>
+          </li>
+        @endif
 
-      @if($user->nivel_acesso == 'professor' && Request::is('professor'))
-      <a href="#modal-criar" data-position="bottom" data-tooltip="Criar uma turma"
-      class="btn tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 right btn-sidenav">
-        <i class="material-icons">add</i>
-      </a>
-      @endif
-
+      </ul>
 </div>
 
   </div>
