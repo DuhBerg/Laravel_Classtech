@@ -26,13 +26,14 @@
 
 
         <div class="input-field">
-          <input type="text" name="email" id="email">
-          <label for="email">E-mail</label>
+          <input type="email" name="email" id="email" class="validate">
+          <label data-error="E-mail inválido" for="email">E-mail</label>
+          <span class="helper-text" data-error="E-mail inválido"></span>
         </div>
 
         <div class="input-field">
-          <input type="password" name="password" id="senha" class="validate">
-          <label data-error="E-mail inválido" for="senha">Senha</label>
+          <input type="password" name="password" id="senha">
+          <label for="senha">Senha</label>
         </div>
 
         <form action="#">
@@ -48,13 +49,6 @@
         </div>
         <a href="#" class="font-esqueci-senha">Esqueceu a senha?</a>
 
-        @if($errors->any())
-        <div class="alert alert-danger">
-            @foreach($errors->all() as $error)
-                <p>e-mail ou senha incorretos!</p>
-            @endforeach
-        </div>
-        @endif
       </form>
     </div>
 

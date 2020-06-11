@@ -50,12 +50,14 @@ class cadastroController extends Controller
         'nivel_acesso' => $dados['nivel_acesso'],
         'foto_perfil' => $dados['foto'],
     ]);
-          return redirect()->route('site.cadastro')->with('message', 'Cadrastro realizado com sucesso!');;
+
+
+
+          return back()->with('success', 'Cadastro realizado com sucesso!');;
         }
         catch(\Illuminate\Database\QueryException $ex)
         {
-
-          return redirect()->route('site.cadastro')->withErrors(['active'=>'Esse e-mail já existe!']);
+          return back()->with('warning', 'Preencha todos os campos!');
         }
 
 

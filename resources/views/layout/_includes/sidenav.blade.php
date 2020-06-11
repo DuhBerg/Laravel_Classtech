@@ -11,7 +11,7 @@
       </a>
 
 
-      <ul class="right">
+      <ul class="right hide-on-med-and-down">
 
         @if($user->nivel_acesso == 'aluno' && Request::is('aluno'))
           <li>
@@ -49,9 +49,9 @@
   <ul id="slide-out" class="sidenav">
     <li><div class="user-view">
       <div class="background"></div>
-        <a href="#user"><img class="circle" src="{{asset($user->foto_perfil)}}"></a>
-        <a href="#name"><span class="white-text name">@yield('perfil')</span></a>
-        <a href="#email"><span class="white-text email">@yield('email')</span></a>
+        <a href="{{ route('perfil.index') }}"><img class="circle" src="{{asset($user->foto_perfil)}}"></a>
+        <a href="{{ route('perfil.index') }}"><span class="white-text name">@yield('perfil')</span></a>
+        <a href="{{ route('perfil.index') }}"><span class="white-text email">@yield('email')</span></a>
       </div>
     </li>
 
@@ -60,6 +60,15 @@
     @if($user->nivel_acesso == 'aluno')
     <li class="@yield('cursos-active')"><a href="#!"><i class="material-icons">menu_book</i>Cursos</a></li>
     <li class="@yield('agenda-active')"><a href="#!"><i class="material-icons">calendar_today</i>Agenda</a></li>
+    @endif
+    @if($user->nivel_acesso == 'aluno' && Request::is('aluno'))
+    <li><a href="#modal-entrar" class="modal-trigger"><i class="material-icons">add</i>Entrar em uma turma</a></li>
+    @endif
+    @if($user->nivel_acesso == 'admin' && Request::is('admin'))
+    <li><a href="#modal-criar" class="modal-trigger"><i class="material-icons">add</i>Criar um professor</a></li>
+    @endif
+    @if($user->nivel_acesso == 'professor' && Request::is('professor'))
+    <li><a href="#modal-criar" class="modal-trigger"><i class="material-icons">add</i>Criar uma turma</a></li>
     @endif
     <li><div class="divider"></div></li>
     <li class="@yield('config-active')"><a href="#!"><i class="material-icons">settings</i>Configuração</a></li>

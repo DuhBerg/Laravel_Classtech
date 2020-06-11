@@ -11,6 +11,8 @@ body{
 .form-login{
   max-width: 500px;
   margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .font-esqueci-senha{
@@ -41,6 +43,15 @@ ul a .circle{
    border-bottom: 1px solid #7986cb !important;
    box-shadow: 0 1px 0 0 #7986cb !important
  }
+
+ /* Active/Inactive Valid input field color */
+   .input-field input[type].valid,
+   .input-field input[type].valid:focus,
+   .input-field textarea.valid,
+   .input-field textarea.valid:focus {
+       border-bottom: 0.1px solid #a3a3a3;
+       box-shadow: 0 0.1px 0 0 #a3a3a3;
+   }
 
  .btn-hover-color:hover{
    background-color: #6c70b9 !important;

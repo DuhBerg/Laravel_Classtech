@@ -30,8 +30,9 @@
               </div>
 
               <div class="input-field">
-                <input type="text" name="email" id="email">
-                <label for="email">E-mail</label>
+                <input type="email" name="email" id="email" class="validate">
+                <label data-error="E-mail inválido" for="email">E-mail</label>
+                <span class="helper-text" data-error="E-mail inválido"></span>
               </div>
 
               <div class="input-field">

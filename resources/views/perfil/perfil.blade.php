@@ -18,16 +18,16 @@
 
 <div class="row">
   <h3 class="center">Perfil</h3>
-  <div class="div-perfil">
+  <div class="">
     <div class="col s12 m12 l4 center">
       <a class="modal-trigger foto-hover" href="#modal-foto">
       <img class="circle foto-perfil z-depth-3" src="{{$user->foto_perfil}}">
     </a>
-        <span class="material-icons icon-edit z-depth-1">edit</span>
-        <p style="color:#7986cb;font-size:20px;font-weight: 600;">Alterar foto</p>
+        <span class="material-icons icon-edit z-depth-1">edit</span><br>
+        <a href="#modal-foto" class="modal-trigger" style="color:#7986cb;font-size:20px;font-weight:600;">Alterar foto</a>
     </div>
     <div class="col s12 m12 l8">
-      <table class="highlight">
+      <table  style="max-width: 800px;" class="highlight">
         <tbody>
           <tr onclick="location.href = '#';" style="cursor: pointer;">
             <th>Nome</th>

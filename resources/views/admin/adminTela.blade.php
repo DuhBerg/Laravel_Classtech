@@ -37,17 +37,17 @@
 </form>
 
 
-<!--------------------------->
+<!-- modal -->
 
 
-<div class="modal" id="modal-criar">
+<div class="modal modal-fixed-footer" id="modal-criar">
   <div class="modal-content">
 
     <h4 class="light">Criar professor</h4>
 
 
 
-      <form style="padding-top:20px;" class="form-login" action="{{ route('admin.criarProf')}}" method="post">
+      <form style="padding-top:15px;" class="form-login" action="{{ route('admin.criarProf')}}" method="post">
 
         <div class="row">
 
