@@ -62,36 +62,34 @@
     <!-- Fazer foreach aqui!-->
     <!-- - - INICIO - - -->
 
+
+    @foreach ($salas as $sala)
+
+
     <div class="col s12 m6 l4">
       <div class="card">
         <div class="card-image">
           <img src="http://vetplus.vet.br/wp-content/uploads/2019/12/meme-da-mulher-gritando-com-o-gato-na-mesa-og-1080x630.jpg">
-          <span class="card-title">Lorem Ipsum</span>
+          <span class="card-title">{{$sala->idTurma}}</span>
         </div>
         <div class="card-content">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+          <p>{{$sala->disciplina}}</p>
         </div>
         <div class="card-action">
-          <a href="#">Botão</a>
+          <a href="#">Ver Sala</a>
         </div>
       </div>
     </div>
 
-    <!-- - - FIM - - -->
+    @endforeach
+
+
 
   </div>
 
 </section>
 
-<!--
-@foreach ($salas as $sala)
 
-  <h3>{{$sala->idTurma}}</h3>
-
-@endforeach
--->
 
 <script>
   //Modal

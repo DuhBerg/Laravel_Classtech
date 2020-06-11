@@ -23,8 +23,9 @@ class turmaController extends Controller
 
       Turma::create([
           'idTurma' => $idTurma,
-          'disciplina' => $dados['disciplina'],
           'idProfessor' => $id,
+          'disciplina' => $dados['disciplina'],
+          'foto_fundo' => 'cu', //$dados['foto_fundo']
       ]);
 
     return redirect()->route('professor.index');

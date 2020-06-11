@@ -14,7 +14,7 @@ class CreateSalasTable extends Migration
     public function up()
     {
         Schema::create('salas', function (Blueprint $table) {
-           $table->id();
+           $table->primary(['idTurma','idAluno']);
            $table->string('idTurma', 6);
            $table->string('idAluno');
            $table->timestamps();

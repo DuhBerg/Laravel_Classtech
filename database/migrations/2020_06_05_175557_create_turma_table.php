@@ -17,6 +17,7 @@ class CreateTurmaTable extends Migration
             $table->string('idTurma', 6)->primary();
             $table->string('idProfessor');
             $table->string('disciplina');
+            $table->string('foto_fundo');
             $table->timestamps();
         });
     }
