@@ -47,23 +47,6 @@
                 <a href="{{ route('site.login') }}" class="waves-effect waves-light btn indigo lighten-2">Tenho uma conta</a>
                 <button class="waves-effect waves-light btn indigo lighten-2 right">Criar</button>
               </div>
-
-
-              @if($errors->any())
-              <div class="alert alert-danger">
-                  @foreach($errors->all() as $error)
-                      <p>{{ $error }}</p>
-                  @endforeach
-              </div>
-              @endif
-              <br>
-                @if(session()->has('message'))
-                  <div class="alert alert-success">
-                      {{ session()->get('message') }}
-                  </div>
-              @endif
-
-
             </form>
           </div>
 
