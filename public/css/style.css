@@ -123,3 +123,20 @@ ul a .circle{
   transition-duration: 0.25s;
   filter: grayscale(70%);
 }
+
+
+
+.box-tema label{
+  position: relative;
+  cursor: pointer;
+}
+
+.box-tema label img{
+  border: 4px solid transparent;
+  border-radius: 5px;
+  padding: 0px;
+}
+
+.box-tema label input:checked ~ img{
+  border: 4px solid #7986cb;
+}
