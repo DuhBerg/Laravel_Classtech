@@ -69,7 +69,7 @@
     <div class="col s12 m6 l4">
       <div class="card">
         <div class="card-image">
-          <img src="http://vetplus.vet.br/wp-content/uploads/2019/12/meme-da-mulher-gritando-com-o-gato-na-mesa-og-1080x630.jpg">
+          <img src="{{$sala->foto_fundo}}">
           <span class="card-title">{{$sala->idTurma}}</span>
         </div>
         <div class="card-content">

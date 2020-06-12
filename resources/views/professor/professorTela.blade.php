@@ -66,37 +66,37 @@
         <div class="box-tema">
 
           <label>
-            <input type="radio" name="foto_fundo" value="tema_1">
+            <input type="radio" name="foto_fundo" value="img/fotos-tema/tema_1.jpg">
               <img style="padding: 0px;" class="col s12 m6 l6 tema"
               src="img/fotos-tema/tema_1.jpg">
           </label>
 
           <label>
-            <input type="radio" name="foto_fundo" value="tema_2">
+            <input type="radio" name="foto_fundo" value="img/fotos-tema/tema_2.jpg">
               <img style="padding: 0px;" class="col s12 m6 l6 tema"
               src="img/fotos-tema/tema_2.jpg">
           </label>
 
           <label>
-            <input type="radio" name="foto_fundo" value="tema_3">
+            <input type="radio" name="foto_fundo" value="img/fotos-tema/tema_3.jpg">
               <img style="padding: 0px;" class="col s12 m6 l6 tema"
               src="img/fotos-tema/tema_3.jpg">
           </label>
 
           <label>
-            <input type="radio" name="foto_fundo" value="tema_4">
+            <input type="radio" name="foto_fundo" value="img/fotos-tema/tema_4.jpg">
               <img style="padding: 0px;" class="col s12 m6 l6 tema"
               src="img/fotos-tema/tema_4.jpg">
           </label>
 
           <label>
-            <input type="radio" name="foto_fundo" value="tema_5">
+            <input type="radio" name="foto_fundo" value="img/fotos-tema/tema_5.jpg">
               <img style="padding: 0px;" class="col s12 m6 l6 tema"
               src="img/fotos-tema/tema_5.jpg">
           </label>
 
           <label>
-            <input type="radio" name="foto_fundo" value="tema_6">
+            <input type="radio" name="foto_fundo" value="img/fotos-tema/tema_6.jpg">
               <img style="padding: 0px;" class="col s12 m6 l6 tema"
               src="img/fotos-tema/tema_6.jpg">
           </label>

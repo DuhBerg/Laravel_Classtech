@@ -50,7 +50,7 @@ class perfilController extends Controller
 
               }
                 else { //erro se o arquivo nao for .png ou .jpg kkk
-                  return back()->with('warning', 'Por favor selecione apenas imagem');
+                  return back()->with('warning', 'Por favor selecione apenas arquivos .png ou .jpg');
                 }
       }
     }

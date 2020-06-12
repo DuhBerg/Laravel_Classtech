@@ -17,18 +17,44 @@ class turmaController extends Controller
 
     public function criar(Request $req)
     {
+
+    try
+    {
       $dados = $req->all();
       $id = auth()->user()->id;
       $idTurma  = $this->randString(6);
 
-      Turma::create([
-          'idTurma' => $idTurma,
-          'idProfessor' => $id,
-          'disciplina' => $dados['disciplina'],
-          'foto_fundo' => 'cu', //$dados['foto_fundo']
-      ]);
+      if($dados['disciplina'] == "")
+      {
+        return back()->with('warning', 'Preencha todos os campos!');
+      }
 
-    return redirect()->route('professor.index');
+      if(!isset($dados['foto_fundo']))
+      return back()->with('warning', 'Seleciona uma foto de fundo!');
+
+
+            else {
+
+
+
+            Turma::create([
+                'idTurma' => $idTurma,
+                'idProfessor' => $id,
+                'disciplina' => $dados['disciplina'],
+                'foto_fundo' => $dados['foto_fundo'],
+            ]);
+
+
+          return redirect()->route('professor.index');
+              }
+
+      }
+
+        catch(\Illuminate\Database\QueryException $ex)
+        {
+          return back()->with('warning', 'Preencha todos os campos!');
+        }
+
     }
 
 
