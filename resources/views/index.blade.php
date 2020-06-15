@@ -15,4 +15,7 @@
 
 <h3>Index</h3>
 
+{{bcrypt('123')}}
+
+
 @endsection

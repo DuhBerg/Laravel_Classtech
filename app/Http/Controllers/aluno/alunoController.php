@@ -8,15 +8,17 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Sala;
 use App\Turma;
+use App\User;
 
 class alunoController extends Controller
 {
     public function index()
     {
       $user = Auth::user(array('id','name','email','nivel_acesso','foto_perfil'));
-      if($user['email'] == ''){
 
-        return redirect()->route('aluno.addEmail');
+      if(!isset($user['email'])){
+
+        return view('aluno.addEmail',compact('user'));
       }
       $salas= Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
       ->select('turma.*')
@@ -30,9 +32,18 @@ class alunoController extends Controller
     }
 
     public function criarEmail(Request $req){
-      dd($req);
+      $dados = $req->all();
       $user = Auth::user(array('id','name','email','nivel_acesso','foto_perfil'));
-      return view('aluno.alunoTela',compact('user','salas'));
+      User::find($user['id'])->update($dados);
+
+      $salas= Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
+      ->select('turma.*')
+      ->where('salas.idAluno', $user['id'])
+      ->get();
+
+      return redirect()->route('aluno.index',compact('user','salas'));
+
+
     }
 
 }
