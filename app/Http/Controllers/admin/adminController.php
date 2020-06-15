@@ -23,7 +23,6 @@ class adminController extends Controller
       User::create([
       'name' => $dados['name'],
       'ra' => $dados['ra'],
-      'email' => $dados['email'],
       'password' => $senha,
       'nivel_acesso' => $dados['nivel_acesso'],
       'foto_perfil' => $dados['foto'],

@@ -26,14 +26,13 @@
 
 
         <div class="input-field">
-          <input type="email" name="email" id="email" class="validate">
-          <label data-error="E-mail inválido" for="email">E-mail</label>
-          <span class="helper-text" data-error="E-mail inválido"></span>
+          <input type="text" name="ra" id="ra" class="validate">
+          <label for="email">RA</label>
         </div>
 
         <div class="input-field">
           <input type="password" name="password" id="senha">
-          <label for="senha">Senha</label>
+          <label for="senha">Password</label>
         </div>
 
         <form action="#">
@@ -47,7 +46,7 @@
         <div class="padding-top-buttom">
           <button class="waves-effect waves-light btn indigo lighten-2 right">Entrar</button>
         </div>
-        <a href="#" class="font-esqueci-senha">Esqueceu a senha?</a>
+
 
       </form>
     </div>
