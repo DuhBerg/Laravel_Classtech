@@ -113,6 +113,52 @@
 <!-- Fim modal tema -->
 
 
+
+<section>
+
+  <div class="row">
+
+
+    <!-- Fazer foreach aqui!-->
+    <!-- - - INICIO - - -->
+
+
+    @foreach ($turmas as $turma)
+
+
+    <div class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{$turma->foto_fundo}}">
+          <span class="card-title">{{$turma->idTurma}}</span>
+        </div>
+        <div class="card-content">
+          <p>{{$turma->disciplina}}</p>
+        </div>
+        <div class="card-action">
+          <a href="#">Ver Sala</a>
+        </div>
+      </div>
+    </div>
+
+    @endforeach
+
+
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
   <script>
     //Modal
     $(document).ready(function(){

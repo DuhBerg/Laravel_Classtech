@@ -13,7 +13,6 @@ class alunoController extends Controller
 {
     public function index()
     {
-
       $user = Auth::user(array('id','name','email','nivel_acesso','foto_perfil'));
       $salas= Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
       ->select('turma.*')
