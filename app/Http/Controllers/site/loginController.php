@@ -48,15 +48,15 @@ class loginController extends Controller
     $rememberMe = true;
 
 
-      if(Auth::attempt(['email'=>$dados['email'],'password'=>$dados['password'],'nivel_acesso'=>'aluno'],$rememberMe))
+      if(Auth::attempt(['ra'=>$dados['ra'],'password'=>$dados['password'],'nivel_acesso'=>'aluno'],$rememberMe))
       {
         return redirect()->route('aluno.index');
       }
-      else if(Auth::attempt(['email'=>$dados['email'],'password'=>$dados['password'],'nivel_acesso'=>'professor'],$rememberMe))
+      else if(Auth::attempt(['ra'=>$dados['ra'],'password'=>$dados['password'],'nivel_acesso'=>'professor'],$rememberMe))
       {
         return redirect()->route('professor.index');
       }
-      else if(Auth::attempt(['email'=>$dados['email'],'password'=>$dados['password'],'nivel_acesso'=>'admin'],$rememberMe))
+      else if(Auth::attempt(['ra'=>$dados['ra'],'password'=>$dados['password'],'nivel_acesso'=>'admin'],$rememberMe))
       {
         return redirect()->route('admin.index');
       }

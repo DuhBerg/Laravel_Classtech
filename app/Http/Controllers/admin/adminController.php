@@ -22,18 +22,28 @@ class adminController extends Controller
       //dd($dados);
       User::create([
       'name' => $dados['name'],
-      'email' => $dados['email'],
+      'ra' => $dados['ra'],
       'password' => $senha,
       'nivel_acesso' => $dados['nivel_acesso'],
       'foto_perfil' => $dados['foto'],
   ]);
-        return redirect()->route('admin.index')->with('message', 'Cadrastro realizado com sucesso!');;
+        return redirect()->route('admin.index')->with('message', 'Cadastro realizado com sucesso!');;
       }
       catch(\Illuminate\Database\QueryException $ex)
       {
 
-        return redirect()->route('admin.index')->withErrors(['active'=>'Esse professor ja existe!']);
+        return redirect()->route('admin.index')->withErrors(['active'=>'Esse usuário já existe!']);
       }
+
+
+
+  }
+
+
+
+
+
+
 
 
 
