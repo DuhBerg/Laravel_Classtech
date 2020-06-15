@@ -37,30 +37,5 @@ class cadastroController extends Controller
   }
 
 
-    public function criar(Request $req)
-    {
-      try{
-        $dados = $req->all();
-        $senha = bcrypt($dados['password']);
-        //dd($dados);
-        User::create([
-        'name' => $dados['name'],
-        'email' => $dados['email'],
-        'password' => $senha,
-        'nivel_acesso' => $dados['nivel_acesso'],
-        'foto_perfil' => $dados['foto'],
-    ]);
 
-
-
-          return back()->with('success', 'Cadastro realizado com sucesso!');;
-        }
-        catch(\Illuminate\Database\QueryException $ex)
-        {
-          return back()->with('warning', 'Preencha todos os campos!');
-        }
-
-
-
-    }
 }

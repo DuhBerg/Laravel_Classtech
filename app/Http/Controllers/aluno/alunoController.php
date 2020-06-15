@@ -18,6 +18,10 @@ class alunoController extends Controller
       ->select('turma.*')
       ->where('salas.idAluno', $user['id'])
       ->get();
+
+
+
+
       return view('aluno.alunoTela',compact('user','salas'));
     }
 }
