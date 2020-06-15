@@ -30,6 +30,7 @@ Route::post('/cadastro/criar',['as'=>'site.cadastro.criar','uses'=>'site\cadastr
 
 Route::group(['middleware'=>'auth'],function(){
 
+Route::post('/aluno/addEmail',['as'=>'aluno.addEmail','uses'=>'aluno\alunoController@criarEmail']);
 
 
 Route::get('/aluno',['as'=>'aluno.index','uses'=>'aluno\alunoController@index']);
