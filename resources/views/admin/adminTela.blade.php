@@ -37,10 +37,10 @@
 </form>
 
 
-<!-- modal -->
+<!-- Inicio modal criar professor -->
 
 
-<div class="modal modal-fixed-footer" id="modal-criar">
+<div class="modal modal-fixed-footer" id="modal-criar-professor">
   <div class="modal-content">
 
     <h4 class="light">Criar professor</h4>
@@ -69,13 +69,12 @@
         </div>
 
 
-        <br>
 
         <input type="hidden" name="nivel_acesso" value="professor">
 
         <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
 
-
+      </form>
 
     </div>
 
@@ -89,13 +88,70 @@
   </div>
 </div>
 
+<!-- Fim modal criar professor -->
 
+<!-- Inicio modal criar aluno -->
+
+
+<div class="modal modal-fixed-footer" id="modal-criar-aluno">
+  <div class="modal-content">
+
+    <h4 class="light">Criar aluno</h4>
+
+
+
+      <form style="padding-top:15px;" class="form-login" action="{{ route('admin.criarProf')}}" method="post">
+
+        <div class="row">
+
+        {{ csrf_field() }}
+
+        <div class="input-field">
+          <input type="text" name="name" id="name">
+          <label for="name">Nome</label>
+        </div>
+
+        <div class="input-field">
+          <input type="text" name="email" id="ra">
+          <label for="ra">RA</label>
+        </div>
+
+        <div class="input-field">
+          <input type="text" name="password" id="data">
+          <label for="data">Data nascimento</label>
+        </div>
+
+
+
+
+        <input type="hidden" name="nivel_acesso" value="professor">
+
+        <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+      <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
+      <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+
+  </div>
+</div>
+
+<!-- Fim modal criar aluno -->
 
 <script>
   //Modal
   $(document).ready(function(){
     $('.modal').modal();
   });
+
+  //Dropdown criar
+  $(".dropdown-trigger").dropdown();
 </script>
 
 

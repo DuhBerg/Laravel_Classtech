@@ -23,13 +23,16 @@
         @endif
 
         @if($user->nivel_acesso == 'admin' && Request::is('admin'))
-          <li>
-            <a href="#modal-criar" data-position="bottom" data-tooltip="Criar um professor"
-            class="tooltipped modal-trigger btn-floating waves-effect waves-light z-depth-0 transparent btn-hover-color">
-              <i class="material-icons">add</i>
-            </a>
-          </li>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown-criar" class="dropdown-content">
+          <li><a href="#modal-criar-professor" class="modal-trigger" style="color:black;">Criar professor</a></li>
+          <li><a href="#modal-criar-aluno" class="modal-trigger" style="color:black;">Criar aluno</a></li>
+        </ul>
+
+        <li><a class="dropdown-trigger" href="" data-target="dropdown-criar">Criar usuário<i class="material-icons right">arrow_drop_down</i></a></li>
         @endif
+
+
 
         @if($user->nivel_acesso == 'professor' && Request::is('professor'))
           <li>
@@ -65,7 +68,14 @@
     <li><a href="#modal-entrar" class="modal-trigger"><i class="material-icons">add</i>Entrar em uma turma</a></li>
     @endif
     @if($user->nivel_acesso == 'admin' && Request::is('admin'))
-    <li><a href="#modal-criar" class="modal-trigger"><i class="material-icons">add</i>Criar um professor</a></li>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown-criar-mobile" class="dropdown-content">
+      <li><a href="#modal-criar-professor" class="modal-trigger">Criar professor</a></li>
+      <li><a href="#modal-criar-aluno" class="modal-trigger">Criar aluno</a></li>
+    </ul>
+
+    <li><div class="divider"></div></li>
+    <li><a style="padding-top:5px;" class="dropdown-trigger" href="" data-target="dropdown-criar-mobile"><i class="material-icons">add</i>Criar usuário<i class="material-icons right">arrow_drop_down</i></a></li>
     @endif
     @if($user->nivel_acesso == 'professor' && Request::is('professor'))
     <li><a href="#modal-criar" class="modal-trigger"><i class="material-icons">add</i>Criar uma turma</a></li>
