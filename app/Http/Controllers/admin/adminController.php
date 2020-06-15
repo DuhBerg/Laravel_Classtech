@@ -48,7 +48,3 @@ class adminController extends Controller
 
 
   }
-
-
-
-}

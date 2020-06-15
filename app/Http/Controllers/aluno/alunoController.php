@@ -15,33 +15,37 @@ class alunoController extends Controller
     public function index()
     {
       $user = Auth::user(array('id','name','email','nivel_acesso','foto_perfil'));
-
-      if(!isset($user['email'])){
-
-        return view('aluno.addEmail',compact('user'));
-      }
       $salas= Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
       ->select('turma.*')
       ->where('salas.idAluno', $user['id'])
       ->get();
 
 
+        if(!isset($user['email']) || $user['email'] == ""){
+          return view('aluno.addEmail',compact('user'));
+        }
 
+        else
+        {
 
-      return view('aluno.alunoTela',compact('user','salas'));
+          return view('aluno.alunoTela',compact('user','salas'));
+        }
     }
+
+
+
 
     public function criarEmail(Request $req){
       $dados = $req->all();
       $user = Auth::user(array('id','name','email','nivel_acesso','foto_perfil'));
-      User::find($user['id'])->update($dados);
-
       $salas= Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
       ->select('turma.*')
       ->where('salas.idAluno', $user['id'])
       ->get();
 
-      return redirect()->route('aluno.index',compact('user','salas'));
+      User::find($user['id'])->update($dados);
+
+      return view('aluno.alunoTela',compact('user','salas'));
 
 
     }

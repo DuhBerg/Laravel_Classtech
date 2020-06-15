@@ -101,7 +101,7 @@
 
 
 
-      <form style="padding-top:15px;" class="form-login" action="{{ route('admin.criarProf')}}" method="post">
+      <form style="padding-top:15px;" class="form-login" action="{{ route('admin.criar')}}" method="post">
 
         <div class="row">
 
@@ -118,14 +118,14 @@
         </div>
 
         <div class="input-field">
-          <input type="text" name="password" id="data">
+          <input type="text" name="password" id="senha">
           <label for="data">Data nascimento</label>
         </div>
 
 
 
 
-        <input type="hidden" name="nivel_acesso" value="professor">
+        <input type="hidden" name="nivel_acesso" value="aluno">
 
         <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
 
@@ -137,7 +137,7 @@
 
   <div class="modal-footer">
 
-      <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
+    <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
       <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
 
   </div>

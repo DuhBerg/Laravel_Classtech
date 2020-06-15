@@ -31,8 +31,6 @@ Route::post('/cadastro/criar',['as'=>'site.cadastro.criar','uses'=>'site\cadastr
 Route::group(['middleware'=>'auth'],function(){
 
 Route::post('/aluno/addEmail',['as'=>'aluno.addEmail','uses'=>'aluno\alunoController@criarEmail']);
-
-
 Route::get('/aluno',['as'=>'aluno.index','uses'=>'aluno\alunoController@index']);
 Route::post('/aluno/sala/criar',['as'=>'aluno.sala.criar','uses'=>'aluno\salaController@criar']);
 
@@ -46,7 +44,7 @@ Route::get('/professor/turmas',['as'=>'professor.turmas.index','uses'=>'professo
 Route::post('/professor/turmas/criar',['as'=>'professor.turmas.criar','uses'=>'professor\turmaController@criar']);
 
 Route::get('/admin',['as'=>'admin.index','uses'=>'admin\adminController@index']);
-Route::post('/admin/criarProf',['as'=>'admin.criarProf','uses'=>'site\cadastroController@criar']);
+Route::post('/admin/criar',['as'=>'admin.criar','uses'=>'admin\adminController@criar']);
 
 
 });
