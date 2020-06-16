@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,11 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/index',['as'=>'site.index','uses'=>'site\siteController@index']);
 
+Route::get('/',['as'=>'site.login','uses'=>'site\loginController@index']);
 Route::get('/login',['as'=>'site.login','uses'=>'site\loginController@index']);
 Route::post('/login/entrar',['as'=>'site.login.entrar','uses'=>'site\loginController@entrar']);
 Route::get('/login/sair',['as'=>'login.sair','uses'=>'site\loginController@sair']);
 
-
+Route::get('/forgotPassword','Security\ForgotPassword@forgot');
+Route::post('/forgotPassword','Security\ForgotPassword@password');
 
 Route::get('/cadastro',['as'=>'site.cadastro','uses'=>'site\cadastroController@index']);
 Route::post('/cadastro/criar',['as'=>'site.cadastro.criar','uses'=>'site\cadastroController@criar']);
@@ -44,11 +45,6 @@ Route::post('/professor/turmas/criar',['as'=>'professor.turmas.criar','uses'=>'p
 
 Route::get('/admin',['as'=>'admin.index','uses'=>'admin\adminController@index']);
 Route::post('/admin/criar',['as'=>'admin.criar','uses'=>'admin\adminController@criar']);
-
-Route::get('/forgotPassword','Security\ForgotPassword@forgot');
-Route::post('/forgotPassword','Security\ForgotPassword@password');
-
-Route::post('/sala',['as'=>'sala.index','uses'=>'sala\salaController@index']);
 
 
 

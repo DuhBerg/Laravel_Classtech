@@ -1,23 +1,94 @@
-body{
+html, body{
   background-image: linear-gradient(0deg, #E6E6F5, white);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
 .nav-wrapper-color{
-  background-image: linear-gradient(-90deg, #7A7DC4, #8098CF);
+  background-image: linear-gradient(-90deg, #7377c0, #6c70b9);
+}
+
+.brand-logo img {
+  height: 55px;
+  padding-top: 8px;
+  padding-left: 5px;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .brand-logo img {
+    height: 50px;
+    object-fit: cover;
+  }
+}
+
+.login-fundo-logo{
+  background-color: #6c70b9;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .login-fundo-logo{
+    display: none;
+  }
+}
+
+.form-center-login{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-login{
-  max-width: 500px;
-  margin: 0 auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  width: 50vw;
+  padding-left: 100px;
+}
+
+@media screen and (max-width: 800px) {
+  .form-login{
+    padding-left: 50px;
+  }
+}
+@media (max-width: 600px) {
+  .form-login{
+    padding-left: 0px;
+    width: 100%;
+  }
+}
+
+.login-logo-mobile{
+  position: absolute;
+  height: 50vw;
+  max-height: 150px;
+  margin:auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: none;
+}
+@media (max-width: 600px) {
+  .login-logo-mobile{
+    display: block;
+  }
+}
+@media (max-height: 500px) {
+  .login-logo-mobile{
+    height: 100px;
+  }
+}
+@media (max-height: 350px) {
+  .login-logo-mobile{
+    height: 50px;
+  }
 }
 
 .font-esqueci-senha{
   padding-top: 2px;
-  color: #7986cb;
+  color: #6c70b9;
   font-size: 17px;
 }
 
