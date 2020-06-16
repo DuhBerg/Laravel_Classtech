@@ -34,7 +34,7 @@
 
 
 
-</form>
+
 
 
 <!-- Inicio modal criar professor -->
@@ -54,13 +54,13 @@
         {{ csrf_field() }}
 
         <div class="input-field">
-          <input type="text" name="ra" id="ra">
-          <label for="email">Ra</label>
+          <input type="text" name="name" id="name">
+          <label for="name">Nome</label>
         </div>
 
         <div class="input-field">
-          <input type="text" name="name" id="name">
-          <label for="name">Nome</label>
+          <input type="text" name="ra" id="ra">
+          <label for="email">RA</label>
         </div>
 
         <div class="input-field">
@@ -74,18 +74,22 @@
 
         <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
 
-      </form>
 
     </div>
 
   </div>
 
-  <div class="modal-footer">
+    <div class="modal-footer">
 
-      <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
-      <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+        <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
+        <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
 
-  </div>
+
+
+    </div>
+
+  </form>
+
 </div>
 
 <!-- Fim modal criar professor -->
@@ -128,18 +132,17 @@
 
         <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
 
-      </form>
-
     </div>
 
   </div>
 
-  <div class="modal-footer">
+    <div class="modal-footer">
 
-    <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
-      <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+      <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
+        <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
 
-  </div>
+    </div>
+  </form>
 </div>
 
 <!-- Fim modal criar aluno -->
