@@ -51,6 +51,8 @@
     </div>
   </div>
 
+
+
 <!-- Fim modal criar turma -->
 
 
@@ -110,6 +112,9 @@
   </div>
 </div>
 
+
+</form>
+
 <!-- Fim modal tema -->
 
 
@@ -136,7 +141,15 @@
           <p>{{$turma->disciplina}}</p>
         </div>
         <div class="card-action">
-          <a href="#">Ver Sala</a>
+
+          <form action="{{ route('sala.index') }}" method="post">
+              {{ csrf_field() }}
+              <input type="hidden" name="idTurma" value="{{$turma->idTurma}}">
+
+              <button class="waves-effect waves-light btn indigo lighten-2">Ver Sala</button>
+          </form>
+
+
         </div>
       </div>
     </div>
