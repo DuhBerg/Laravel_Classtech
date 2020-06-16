@@ -3,7 +3,7 @@
   <div class="nav-wrapper nav-wrapper-color">
 
 
-      <a href="{{ route('site.index') }}" class="brand-logo">Logo</a>
+      <a href="{{ route('site.index') }}" class="brand-logo"> <img src="img/fotos-logo/logo-white.png" alt="logo"> </a>
 
 
       <a href="#" data-target="slide-out" class="sidenav-trigger right" style="display:block">

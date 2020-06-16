@@ -26,8 +26,8 @@
 
 
         <div class="input-field">
-          <input type="text" name="ra" id="ra" class="validate">
-          <label for="email">RA</label>
+          <input type="text" name="ra" id="ra">
+          <label for="ra">RA</label>
         </div>
 
         <div class="input-field">

@@ -53,7 +53,6 @@
 
         {{ csrf_field() }}
 
-        <h3> Criar Professor </h3>
         <div class="input-field">
           <input type="text" name="ra" id="ra">
           <label for="email">Ra</label>
