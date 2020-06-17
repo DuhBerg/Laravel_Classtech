@@ -34,7 +34,7 @@
 
 
 
-</form>
+
 
 
 <!-- Inicio modal criar professor -->
@@ -45,8 +45,6 @@
 
     <h4 class="light">Criar professor</h4>
 
-
-
       <form style="padding-top:15px;" class="form-login" action="{{ route('admin.criar')}}" method="post">
 
         <div class="row">
@@ -54,38 +52,41 @@
         {{ csrf_field() }}
 
         <div class="input-field">
-          <input type="text" name="ra" id="ra">
-          <label for="email">Ra</label>
+          <input type="text" name="name" id="name">
+          <label for="name">Nome</label>
         </div>
 
         <div class="input-field">
-          <input type="text" name="name" id="name">
-          <label for="name">Nome</label>
+          <input type="text" name="ra" id="ra">
+          <label for="email">RA</label>
         </div>
 
         <div class="input-field">
           <input type="password" name="password" id="senha">
           <label for="senha">Senha</label>
         </div>
-
-
+        
 
         <input type="hidden" name="nivel_acesso" value="professor">
 
         <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
 
-      </form>
 
     </div>
 
   </div>
 
-  <div class="modal-footer">
+    <div class="modal-footer">
 
-      <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
-      <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+        <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
+        <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
 
-  </div>
+
+
+    </div>
+
+  </form>
+
 </div>
 
 <!-- Fim modal criar professor -->
@@ -121,82 +122,27 @@
           <label for="data">Data nascimento</label>
         </div>
 
-
-
-
         <input type="hidden" name="nivel_acesso" value="aluno">
 
         <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
-
-      </form>
 
     </div>
 
   </div>
 
-  <div class="modal-footer">
+    <div class="modal-footer">
 
-    <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
-      <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+      <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
+        <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
 
-  </div>
+    </div>
+  </form>
 </div>
 
 <!-- Fim modal criar aluno -->
 
 
 
-
-
-<div class="modal modal-fixed-footer" id="modal-criar">
-  <div class="modal-content">
-
-    <h4 class="light">Criar professor</h4>
-
-
-
-      <form style="padding-top:15px;" class="form-login" action="{{ route('admin.criar')}}" method="post">
-
-        <div class="row">
-
-        {{ csrf_field() }}
-
-        <h3> Criar Professor </h3>
-        <div class="input-field">
-          <input type="text" name="ra" id="ra">
-          <label for="ra">Ra</label>
-        </div>
-
-        <div class="input-field">
-          <input type="text" name="name" id="name">
-          <label for="name">Nome</label>
-        </div>
-
-        <div class="input-field">
-          <input type="text" name="password" id="senha">
-          <label for="senha">Senha / Data de nascimento</label>
-        </div>
-
-
-        <br>
-
-        <input type="hidden" name="nivel_acesso" value="aluno">
-
-        <input type="hidden" name="foto" value="img/fotos-perfil/default.png">
-
-
-
-    </div>
-
-  </div>
-
-  <div class="modal-footer">
-
-      <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
-      <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
-
-  </div>
-</div>
 
 
 
