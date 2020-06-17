@@ -232,10 +232,7 @@ return [
         'Activation' => Cartalyst\Sentinel\Laravel\Facades\Activation::class,
         'Reminder'   => Cartalyst\Sentinel\Laravel\Facades\Reminder::class,
         'Sentinel'   => Cartalyst\Sentinel\Laravel\Facades\Sentinel::class,
-<<<<<<< HEAD
 
-=======
->>>>>>> cb144a232fe87336cc3137e18b8e0492e2cfc174
 
     ],
 
