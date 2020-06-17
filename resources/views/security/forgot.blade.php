@@ -8,6 +8,14 @@
      <form  action="{{ url('/forgotPassword') }}" method="post">
       {{ csrf_field() }}
 
+      @if(session('error'))
+        <div>{{ session('error') }}</div>
+      @endif
+
+      @if(session('sucess'))
+      <div>{{ session('sucess') }}</div>
+      @endif
+
       <input type="email" name="email" id="email">
       <button type="submit">Enviar</button>
      </form>
