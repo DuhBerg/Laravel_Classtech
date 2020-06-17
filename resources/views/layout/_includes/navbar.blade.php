@@ -1,3 +1,6 @@
+
+
+
 <nav>
   <div class="nav-wrapper nav-wrapper-color">
     <a href="{{ route('site.index') }}" class="brand-logo"> <img src="img/fotos-logo/logo-white.png" alt="logo"> </a>

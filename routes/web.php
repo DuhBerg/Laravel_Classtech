@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('',['as'=>'site.index','uses'=>'site\siteController@index']);
-
-Route::get('/',['as'=>'site.login','uses'=>'site\siteController@index']);
+Route::get('/',['as'=>'site.index','uses'=>'site\loginController@index']);
 
 Route::get('/login',['as'=>'site.login','uses'=>'site\loginController@index']);
 Route::post('/login/entrar',['as'=>'site.login.entrar','uses'=>'site\loginController@entrar']);
@@ -47,6 +45,6 @@ Route::post('/professor/turmas/criar',['as'=>'professor.turmas.criar','uses'=>'p
 Route::get('/admin',['as'=>'admin.index','uses'=>'admin\adminController@index']);
 Route::post('/admin/criar',['as'=>'admin.criar','uses'=>'admin\adminController@criar']);
 
-
+Route::post('/sala',['as'=>'sala.index','uses'=>'sala\salaController@index']);
 
 });
