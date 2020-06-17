@@ -9,6 +9,8 @@ use Auth;
 use App\Sala;
 use App\Turma;
 use App\User;
+use App\Mail\Teste;
+use Illuminate\Support\Facades\Mail;
 
 class alunoController extends Controller
 {
@@ -42,6 +44,9 @@ class alunoController extends Controller
       ->select('turma.*')
       ->where('salas.idAluno', $user['id'])
       ->get();
+
+
+      Mail::to($dados['email'])->send(new Teste($dados));
 
       User::find($user['id'])->update($dados);
 
