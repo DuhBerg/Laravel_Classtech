@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\User;
 
 class Teste extends Mailable
 {
@@ -16,9 +17,9 @@ class Teste extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($key)
     {
-        //
+        $this->key = $key;
     }
 
     /**
@@ -28,6 +29,11 @@ class Teste extends Mailable
      */
     public function build()
     {
-        return $this->view('email.teste');
+      //dd($this->key);
+      //dd($this->email);
+
+        return $this->view('email.teste')->with(['link' => $this->key]);
+
+
     }
 }

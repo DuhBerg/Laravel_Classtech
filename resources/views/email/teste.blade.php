@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Welcome Email</title>
+    <title>Teste confirmação</title>
 </head>
 
 <body>
-<h2>Welcome to the site </h2>
-<br/>
-Your registered email-id is 
+<h2>Clique no link para confirmar seu email:</h2>
+<br>
+<button>
+
+https://localhost:8000/confirmar_email/?token={{$link}}
+
 </body>
 
 </html>
