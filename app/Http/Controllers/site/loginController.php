@@ -31,7 +31,7 @@ class loginController extends Controller
             }
         }
       else  {
-          return view('login');
+          return view('site.login');
             }
 
     }
