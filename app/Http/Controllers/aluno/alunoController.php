@@ -3,6 +3,7 @@
 
 namespace App\Http\Controllers\aluno;
 
+use Crypt;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
@@ -46,11 +47,22 @@ class alunoController extends Controller
       ->get();
 
 
-      Mail::to($dados['email'])->send(new Teste($dados));
+      $key = Crypt::encrypt($dados['email']);
 
-      User::find($user['id'])->update($dados);
+      //dd($key);
 
-      return view('aluno.alunoTela',compact('user','salas'));
+      $fodase = decrypt($key);
+
+      dd($fodase);
+
+
+
+
+      Mail::to($dados['email'])->send(new Teste($key,$dados));
+
+      // User::find($user['id'])->update($dados);
+
+      return redirect()->route('aluno.index',compact($user,$salas));
 
 
     }
