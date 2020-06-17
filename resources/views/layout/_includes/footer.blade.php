@@ -14,6 +14,12 @@
     $('.tooltipped').tooltip();
   });
 
+  //Tabs
+
+  $(document).ready(function(){
+   $('.tabs').tabs();
+ });
+
 </script>
 
 <!-- include do SweetAlert -->

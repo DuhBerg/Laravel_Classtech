@@ -24,15 +24,19 @@
     <div class="modal-content">
 
       <h4 class="light">Criar turma</h4>
+      <p style="padding-top:5px;">Coloque a matéria e a turma que você ensina.</p>
+      <p> <b>Exemplo:</b> Matemática - 1º ano </p>
 
       <form style="padding-top:20px;" action="{{ route('professor.turmas.criar') }}" method="post">
 
         {{ csrf_field() }}
 
       <div class="row">
+
         <div class="input-field">
+
           <input type="text" name="disciplina" id="disciplina">
-          <label for="disciplina">Disciplina</label>
+          <label for="disciplina">Matéria e turma</label>
         </div>
 
 
@@ -46,7 +50,6 @@
     </div>
 
     <div class="modal-footer">
-        <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
         <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
     </div>
   </div>
@@ -108,7 +111,7 @@
     </div>
 
   <div class="modal-footer">
-    <button class="waves-effect waves-light btn indigo lighten-2">Selecionar</button>
+    <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
   </div>
 </div>
 
@@ -132,13 +135,13 @@
 
 
     <div class="col s12 m6 l4">
-      <div class="card">
+      <div class="card small">
         <div class="card-image">
           <img src="{{$turma->foto_fundo}}">
-          <span class="card-title">{{$turma->idTurma}}</span>
+          <span class="card-title">{{$turma->disciplina}}</span>
         </div>
         <div class="card-content">
-          <p>{{$turma->disciplina}}</p>
+          <p>Código: {{$turma->idTurma}}</p>
         </div>
         <div class="card-action">
 
