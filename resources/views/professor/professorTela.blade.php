@@ -24,8 +24,8 @@
     <div class="modal-content">
 
       <h4 class="light">Criar turma</h4>
-      <p style="padding-top:5px;">Coloque a matéria e a turma que você ensina.</p>
-      <p> <b>Exemplo:</b> Matemática - 1º ano </p>
+      <h6>Coloque a matéria e a turma que você ensina</h6>
+      <h6> <b>Exemplo:</b> Matemática - 1º ano </h6>
 
       <form style="padding-top:20px;" action="{{ route('professor.turmas.criar') }}" method="post">
 
@@ -168,19 +168,6 @@
 
 
 
-
-
-
-
-
-
-
-  <script>
-    //Modal
-    $(document).ready(function(){
-      $('.modal').modal();
-    });
-  </script>
 
 
 @endsection

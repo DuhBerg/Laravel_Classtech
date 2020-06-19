@@ -65,7 +65,7 @@
           <input type="password" name="password" id="senha">
           <label for="senha">Senha</label>
         </div>
-        
+
 
         <input type="hidden" name="nivel_acesso" value="professor">
 
@@ -142,19 +142,6 @@
 <!-- Fim modal criar aluno -->
 
 
-
-
-
-
-<script>
-  //Modal
-  $(document).ready(function(){
-    $('.modal').modal();
-  });
-
-  //Dropdown criar
-  $(".dropdown-trigger").dropdown();
-</script>
 
 
 @endsection

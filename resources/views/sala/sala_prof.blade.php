@@ -75,6 +75,40 @@
 
 <!-- Fim tab navbar conteudo -->
 
+<!-- Inicio modal editar -->
+
+<div class="modal modal-fixed-footer" id="modal-editar">
+  <div class="modal-content">
+
+    <h4 class="light">Editar turma</h4>
+
+    <form style="padding-top:2px;" action="" method="post">
+
+      <h5>Alterar nome</h5>
+    <p> <b>Atenção!</b> Coloque a matéria e a turma que você ensina caso for alterar o nome</p>
+    <p> <b>Exemplo:</b> Matemática - 1º ano </p>
+
+
+      {{ csrf_field() }}
+
+    <div style="padding: 5px;" class="row">
+      <div class="input-field">
+        <input type="text" name="SLA" id="SLA">
+        <label for="SLA">Matéria e turma</label>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+
+      <button class="waves-effect waves-light btn indigo lighten-2">Entrar</button>
+      <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+
+  </div>
+</div>
+
+<!-- Fim modal editar -->
 
 @endforeach
 

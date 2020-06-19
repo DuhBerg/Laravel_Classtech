@@ -7,7 +7,6 @@
     var instances = M.Sidenav.init(elems, {edge:'right'});
   });
 
-
   //Tooltips
 
   $(document).ready(function(){
@@ -18,7 +17,17 @@
 
   $(document).ready(function(){
    $('.tabs').tabs();
- });
+  });
+
+  //Modal
+
+   $(document).ready(function(){
+     $('.modal').modal();
+   });
+
+   //Dropdown criar
+   
+   $(".dropdown-trigger").dropdown();
 
 </script>
 
