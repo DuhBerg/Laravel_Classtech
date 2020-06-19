@@ -63,11 +63,8 @@ class alunoController extends Controller
 
 
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 0d352b05a18bc42c52c100c5ce179869bb280788
     public function confirmarEmail(Request $req)
     {
 
@@ -82,13 +79,13 @@ class alunoController extends Controller
       ->get();
 
 
+
       foreach($procura_email as $usuario)
       {
         if($usuario->email == null)
         {
             User::find($id)->update(['email' => $email]);
             echo "Email confirmado com sucesso!";
-
         }
 
         elseif($usuario->email != null) {
