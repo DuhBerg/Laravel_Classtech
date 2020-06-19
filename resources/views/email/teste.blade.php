@@ -5,11 +5,14 @@
 </head>
 
 <body>
-<h2>Clique no link para confirmar seu email:</h2>
-<br>
-<button>
+<h2>Clique no botao para confirmar seu email </h2>
 
-https://localhost:8000/confirmar_email/?token={{$link}}
+<a class="btn btn-success" href="localhost:8000/confirmarEmail/?token={{$link}}&id={{$id}}" target="_blank">CONFIRMAR EMAIL
+</a>
+
+
+
+
 
 </body>
 

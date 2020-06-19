@@ -17,9 +17,10 @@ class Teste extends Mailable
      *
      * @return void
      */
-    public function __construct($key)
+    public function __construct($key, $dados)
     {
         $this->key = $key;
+        $this->dados = $dados;
     }
 
     /**
@@ -32,7 +33,7 @@ class Teste extends Mailable
       //dd($this->key);
       //dd($this->email);
 
-        return $this->view('email.teste')->with(['link' => $this->key]);
+        return $this->view('email.teste')->with(['link' => $this->key,'id' => $this->dados['id']]);
 
 
     }

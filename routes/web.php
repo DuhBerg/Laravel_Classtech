@@ -30,6 +30,11 @@ Route::post('/cadastro/criar',['as'=>'site.cadastro.criar','uses'=>'site\cadastr
 
 
 
+
+Route::get('/confirmarEmail/{token?}',['as'=>'site.confirmarEmail','uses'=>'aluno\alunoController@confirmarEmail']);
+
+
+
 Route::group(['middleware'=>'auth'],function(){
 
 Route::post('/aluno/addEmail',['as'=>'aluno.addEmail','uses'=>'aluno\alunoController@criarEmail']);
