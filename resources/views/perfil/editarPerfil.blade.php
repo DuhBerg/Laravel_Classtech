@@ -1,5 +1,5 @@
 @extends('layout.site')
-@section('titulo','Aluno')
+@section('titulo','Home')
 @section('perfil',Auth::user()->name)
 @section('email',Auth::user()->email)
 @section('sair','Sair')
@@ -11,7 +11,37 @@
 
 @endsection
 
+<!--
 
+
+
+
+
+------------------------------
+
+
+
+
+
+
+
+ESSA TELA NAO ESTA SENDO USADA!
+
+
+
+
+
+
+
+
+--------------------------------
+
+
+
+
+
+
+-->
 
 @section('conteudo')
 

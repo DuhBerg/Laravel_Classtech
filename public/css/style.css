@@ -86,6 +86,14 @@ html, body{
   }
 }
 
+.form-esqueci-senha{
+  max-width: 500px;
+  right:0;
+  left:0;
+  padding-top: 50px;
+  margin:auto;
+}
+
 .font-esqueci-senha{
   padding-top: 2px;
   color: #6c70b9;

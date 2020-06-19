@@ -1,23 +1,46 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>ESQUECEU A SENHA KRL ? AI E FODA EM</title>
-  </head>
-  <body>
-     <form  action="{{ url('/forgotPassword') }}" method="post">
-      {{ csrf_field() }}
+@extends('layout.site')
+@section('titulo','Esqueci senha')
+@section('login','Login')
 
-      @if(session('error'))
-        <div>{{ session('error') }}</div>
-      @endif
+@section('navbar')
 
-      @if(session('sucess'))
-      <div>{{ session('sucess') }}</div>
-      @endif
+@include('layout._includes.navbar')
 
-      <input type="email" name="email" id="email">
-      <button type="submit">Enviar</button>
-     </form>
-  </body>
-</html>
+@endsection
+
+
+@section('conteudo')
+
+  <div class="row">
+
+    <h3 class="center">Esqueci senha</h3>
+    <h6 class="center">Coloque o e-mail cadastrado abaixo, enviaremos uma mensagem para alteração da senha</h6>
+
+    <div class="col s12">
+
+      <form class="form-esqueci-senha"  action="{{ url('/forgotPassword') }}" method="post">
+       {{ csrf_field() }}
+
+       @if(session('error'))
+         <div>{{ session('error') }}</div>
+       @endif
+
+       @if(session('sucess'))
+       <div>{{ session('sucess') }}</div>
+       @endif
+
+
+       <div class="input-field">
+         <input type="email" name="email" id="email" class="validate">
+         <label data-error="E-mail inválido" for="email">E-mail</label>
+         <span class="helper-text" data-error="E-mail inválido"></span>
+       </div>
+
+       <button type="submit" class="waves-effect waves-light btn indigo lighten-2 right">Enviar</button>
+      </form>
+
+    </div>
+
+  </div>
+
+@endsection

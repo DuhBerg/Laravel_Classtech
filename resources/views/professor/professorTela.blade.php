@@ -1,5 +1,5 @@
 @extends('layout.site')
-@section('titulo','Professor')
+@section('titulo','Home')
 @section('perfil',Auth::user()->name)
 @section('email',Auth::user()->email)
 @section('sair','Sair')
@@ -149,7 +149,7 @@
               {{ csrf_field() }}
               <input type="hidden" name="idTurma" value="{{$turma->idTurma}}">
 
-              <button class="waves-effect waves-light btn indigo lighten-2">Ver Sala</button>
+              <button class="waves-effect waves-light btn indigo lighten-2">Ver turma</button>
           </form>
 
 
