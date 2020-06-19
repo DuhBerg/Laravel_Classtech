@@ -38,7 +38,7 @@
           </div>
           <div class="card-content">
             <p>Código: {{$turmas->idTurma}}</p>
-            <p style="padding-top:15px;">20 alunos</p>
+            <p style="padding-top:15px;">{{ $count}} Aluno(s)</p>
           </div>
         </div>
       </div>
@@ -60,7 +60,35 @@
 <!-- Inicio tab alunos -->
 
 <div id="alunos" class="col s12">
-  <h1>Alunos</h1>
+  <center><h1>Alunos</h1></center>
+  <div class="container">
+    <h3 class="center">Lista de cursos</h3>
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>RA</th>
+            <th>Imagem</th>
+          </tr>
+          @foreach($listaAlunos as $lista)
+            <tr>
+              <td>{{ $lista->name }}</td>
+              <td>{{ $lista->ra }}</td>
+              <td><img height="60" src="{{asset($lista->foto_perfil)}}"/></td>
+              <td>
+                <a class="btn deep-orange" href="#">Editar</a>
+                <a class="btn red" href="#">Deletar</a>
+              </td>
+            </tr>
+          @endforeach
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+</div>
 </div>
 
 <!-- Fim tab alunos -->

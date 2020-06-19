@@ -113,7 +113,7 @@
         </div>
 
         <div class="input-field">
-          <input type="text" name="email" id="ra">
+          <input type="text" name="ra" id="ra">
           <label for="ra">RA</label>
         </div>
 

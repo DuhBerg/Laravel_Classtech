@@ -24,6 +24,8 @@ class alunoController extends Controller
       ->where('salas.idAluno', $user['id'])
       ->get();
 
+//      select id, nome from Produtos where nome is null; 
+
 
         if(!isset($user['email']) || $user['email'] == ""){
           return view('aluno.addEmail',compact('user'));
@@ -63,11 +65,9 @@ class alunoController extends Controller
 
 
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 0d352b05a18bc42c52c100c5ce179869bb280788
+
     public function confirmarEmail(Request $req)
     {
 
