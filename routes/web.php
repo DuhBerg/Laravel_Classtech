@@ -50,7 +50,6 @@ Route::get('/perfil',['as'=>'perfil.index','uses'=>'site\perfilController@index'
 Route::get('/perfil/editar-foto',['as'=>'perfil.viewFoto','uses'=>'site\perfilController@viewFoto']);
 Route::post('/perfil/editar-foto/salvar',['as'=>'perfil.viewFoto.salvar','uses'=>'site\perfilController@salvaFoto']);
 
-
 Route::get('/professor',['as'=>'professor.index','uses'=>'professor\professorController@index']);
 Route::get('/professor/turmas',['as'=>'professor.turmas.index','uses'=>'professor\turmaController@index']);
 Route::post('/professor/turmas/criar',['as'=>'professor.turmas.criar','uses'=>'professor\turmaController@criar']);
@@ -58,6 +57,7 @@ Route::post('/professor/turmas/criar',['as'=>'professor.turmas.criar','uses'=>'p
 Route::get('/admin',['as'=>'admin.index','uses'=>'admin\adminController@index']);
 Route::post('/admin/criar',['as'=>'admin.criar','uses'=>'admin\adminController@criar']);
 
+Route::get('/sala/deletar/{idAluno}',['as'=>'sala.deletar','uses'=>'sala\salaController@deletar']);
 Route::post('/sala',['as'=>'sala.index','uses'=>'sala\salaController@index']);
 
 });

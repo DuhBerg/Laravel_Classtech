@@ -35,12 +35,16 @@ class salaController extends Controller
           array_push($alunos, User::select('*')->where('id',$aluno->idAluno)->first());
         }
 
-
-
-
-
-
       return view('sala.sala_prof')->with(compact('user','turma','count','alunos'));
+    }
+
+    public function deletar($idAluno)
+    {
+
+      Sala::find($idAluno)->delete();
+      return redirect()->route('professor.index');
 
     }
+
+
 }

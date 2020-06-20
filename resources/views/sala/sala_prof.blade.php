@@ -77,7 +77,7 @@
               <td>{{ $aluno->ra }}</td>
               <td><img height="60" src="{{asset($aluno->foto_perfil)}}"/></td>
               <td>
-                <a class="btn red" href="#">Deletar</a>
+                <a class="btn red" href="{{ route('sala.deletar',$aluno->id) }}">Deletar</a>
               </td>
             </tr>
           @endforeach

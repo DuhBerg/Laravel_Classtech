@@ -11,4 +11,6 @@ class Sala extends Model
   ];
 
   protected $table = "salas";
+  protected $primaryKey = 'idAluno';
+
 }

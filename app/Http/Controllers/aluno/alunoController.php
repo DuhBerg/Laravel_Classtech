@@ -24,7 +24,7 @@ class alunoController extends Controller
       ->where('salas.idAluno', $user['id'])
       ->get();
 
-//      select id, nome from Produtos where nome is null; 
+//      select id, nome from Produtos where nome is null;
 
 
         if(!isset($user['email']) || $user['email'] == ""){
@@ -82,13 +82,13 @@ class alunoController extends Controller
       ->get();
 
 
+
       foreach($procura_email as $usuario)
       {
         if($usuario->email == null)
         {
             User::find($id)->update(['email' => $email]);
             echo "Email confirmado com sucesso!";
-
         }
 
         elseif($usuario->email != null) {
