@@ -23,36 +23,57 @@ class ForgotPassword extends Controller
       if($user == null){
         return redirect()->back()->with(['error' => 'Email não existe!']);
       }
-      $user = Sentinel::findById($user->id);
-      $this->sendEmail($user);
+        else {
 
-      return redirect()->back()->with(['sucess'=>'O link para resetar a senha foi enviado para o seu email.']);
+        $user = Sentinel::findById($user->id);
+        $this->sendEmail($user);
+        return redirect()->back()->with(['sucess'=>'O link para resetar a senha foi enviado para o seu email.']);
+        }
     }
 
 
 
     public function sendEmail($user)
     {
-      $email = Crypt::encrypt($user->email);
-      $procura_id = User::select('id')->whereEmail($user->email)->first();
 
-      foreach($procura_id as $id)
-        {
-          $id_crypt = Crypt::encrypt($id);
-          Mail::send('email.forgot',['user'=> $user, 'email' => $email, 'id'=>$id_crypt], function($message) use ($user)
+          $email = Crypt::encrypt($user->email);
+          $id = Crypt::encrypt($user->id);
+          Mail::send('email.message_view.forgot',['user'=> $user, 'email' => $email, 'id'=>$id], function($message) use ($user)
           {
           $message->to($user->email);
           $message->subject("$user->name, Redefinir sua senha.");
-          }
-        );
+          });
         }
+
+
+
+
+
+    public function resetSenha_index(Request $req)
+    {
+      $email = Crypt::decrypt($req->email);
+      $id = Crypt::decrypt($req->id);
+      return view('email.email_telas.esqueciSenha', ['email'=>$email,'id'=>$id]);
     }
+
 
 
 
 
     public function resetSenha(Request $req)
     {
+      $dados = $req->all();
+      $senha = bcrypt($dados['password']);
+
+      if(User::find($dados['id'])->update(['password'=>$senha]))
+      {
+        echo "Senha alterada com sucesso!";
+        // COLOCAR RETURN PRA VIEW E MOSTRAR MENSAGEM BONITINHA!!!!! -------------------------------
+      }
+      else {
+        echo "Não foi possível alterar sua senha!";
+      }
+
 
     }
 

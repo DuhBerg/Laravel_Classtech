@@ -71,13 +71,12 @@
             <th>RA</th>
             <th>Imagem</th>
           </tr>
-          @foreach($listaAlunos as $lista)
+          @foreach($alunos as $aluno)
             <tr>
-              <td>{{ $lista->name }}</td>
-              <td>{{ $lista->ra }}</td>
-              <td><img height="60" src="{{asset($lista->foto_perfil)}}"/></td>
+              <td>{{ $aluno->name }}</td>
+              <td>{{ $aluno->ra }}</td>
+              <td><img height="60" src="{{asset($aluno->foto_perfil)}}"/></td>
               <td>
-                <a class="btn deep-orange" href="#">Editar</a>
                 <a class="btn red" href="#">Deletar</a>
               </td>
             </tr>
