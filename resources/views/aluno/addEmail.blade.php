@@ -21,7 +21,7 @@
             <form class="form-login" action="{{ route('aluno.addEmail')}}" method="post">
 
               {{ csrf_field() }}
-            
+
               <div class="input-field">
                 <input type="email" name="email" id="email" class="validate">
                 <label data-error="E-mail inválido" for="email">E-mail</label>
@@ -29,7 +29,7 @@
               </div>
 
             <div class="padding-top-buttom">
-              <button class="waves-effect waves-light btn indigo lighten-2 right">Criar</button>
+              <button class="waves-effect waves-light btn indigo lighten-2 right">Confirmar meu e-mail</button>
             </div>
           </form>
         </div>
