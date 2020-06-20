@@ -180,9 +180,9 @@ ul a .circle{
   background-color: #ddd !important;
 }
 
-.foto-editar-perfil{
-  height: 60px;
-  width: 60px;
+.foto-aluno{
+  height: 50px;
+  width: 50px;
   object-fit: cover;
 }
 

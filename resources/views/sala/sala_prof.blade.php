@@ -60,7 +60,42 @@
 <!-- Inicio tab alunos -->
 
 <div id="alunos" class="col s12">
-  <h1>Alunos</h1>
+
+  <div class="container">
+
+    <table>
+        <thead class="centered">
+          <tr>
+              <th>nº</th>
+              <th>Foto</th>
+              <th>Nome</th>
+              <th>RA</th>
+              <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <!-- INICIO FOREACH -->
+
+
+          <tr>
+            <td>1<!-- COLOCAR INCREMENT --></td>
+            <td><img class="circle foto-aluno z-depth-1" src="{{$user->foto_perfil}}"></td>
+            <td>Exemplo Nome</td>
+            <td>52541</td>
+            <td> <a href="#" class="waves-effect waves-light btn red right">Remover</a> </td>
+          </tr>
+
+
+          <!-- FIM FOREACH -->
+
+
+        </tbody>
+      </table>
+
+  </div>
+
 </div>
 
 <!-- Fim tab alunos -->
