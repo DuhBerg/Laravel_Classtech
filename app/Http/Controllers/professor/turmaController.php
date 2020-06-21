@@ -38,7 +38,7 @@ class turmaController extends Controller
 
 
             Turma::create([
-                'idTurma' => $idTurma,
+                'id' => $idTurma,
                 'idProfessor' => $id,
                 'disciplina' => $dados['disciplina'],
                 'foto_fundo' => $dados['foto_fundo'],

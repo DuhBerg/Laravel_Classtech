@@ -57,7 +57,8 @@ Route::post('/professor/turmas/criar',['as'=>'professor.turmas.criar','uses'=>'p
 Route::get('/admin',['as'=>'admin.index','uses'=>'admin\adminController@index']);
 Route::post('/admin/criar',['as'=>'admin.criar','uses'=>'admin\adminController@criar']);
 
-Route::get('/sala/deletar/{idAluno}',['as'=>'sala.deletar','uses'=>'sala\salaController@deletar']);
 Route::post('/sala',['as'=>'sala.index','uses'=>'sala\salaController@index']);
+Route::post('/sala/deletar',['as'=>'sala.deletar_aluno','uses'=>'sala\salaController@deletar']);
+Route::post('/sala/editar',['as'=>'sala.editar_nome','uses'=>'sala\salaController@editar']);
 
 });

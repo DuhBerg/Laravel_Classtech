@@ -38,13 +38,45 @@ class salaController extends Controller
       return view('sala.sala_prof')->with(compact('user','turma','count','alunos'));
     }
 
-    public function deletar($idAluno)
+    public function deletar(Request $req)
     {
+      $dados = $req->all();
+      $apaga_aluno = Sala::where('idTurma',$dados['id_turma'],['idAluno',$dados['id_aluno']])->delete();
 
-      Sala::find($idAluno)->delete();
-      return redirect()->route('professor.index');
+
+      if($apaga_aluno)
+      {
+        return redirect()->route('professor.index');
+        //aluno excluido com sucesso!
+
+      }
+      else {
+        return redirect()->route('professor.index');
+        //nao foi possível excluir o aluno!
+      }
+
 
     }
+
+
+    public function editar(Request $req)
+    {
+      $dados = $req->all();
+      $atualiza_sala = Turma::where('idTurma',$dados['id_turma'])->update(['disciplina' => $dados['nome_turma']]);
+
+      if($atualiza_sala)
+      {
+        return redirect()->route('professor.index');
+        //nome da turma atualizado com sucesso!
+      }
+      else {
+        return redirect()->route('professor.index');
+       //nao foi possível atualizar o nome da turma!;
+      }
+
+
+    }
+
 
 
 }

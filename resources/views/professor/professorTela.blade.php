@@ -130,10 +130,7 @@
     <!-- Fazer foreach aqui!-->
     <!-- - - INICIO - - -->
 
-
     @foreach ($turmas as $turma)
-
-
     <div class="col s12 m6 l4">
       <div class="card small">
         <div class="card-image">
