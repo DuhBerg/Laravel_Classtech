@@ -60,39 +60,37 @@
 <!-- Inicio tab alunos -->
 
 <div id="alunos" class="col s12">
+  <a href="#modal-solicitacoes" class=" modal-trigger btn waves-effect waves-light indigo lighten-2">Solicitações</a>
 
   @if(!empty($alunos))
 
-  <center><h1>Alunos</h1></center>
   <div class="container">
-
-    <h3 class="center">Lista de cursos</h3>
     <div class="row">
       <table>
         <thead>
           <tr>
+            <th>Foto</th>
             <th>Nome</th>
             <th>RA</th>
-            <th>Imagem</th>
+            <th></th>
           </tr>
+        </thead>
+        <tbody>
           @foreach($alunos as $aluno)
             <tr>
+              <td><img height="60" class="circle" src="{{asset($aluno->foto_perfil)}}"/></td>
               <td>{{ $aluno->name }}</td>
               <td>{{ $aluno->ra }}</td>
-              <td><img height="60" src="{{asset($aluno->foto_perfil)}}"/></td>
               <td>
                   <form action="{{ route('professor.sala.deletar_aluno')}}" method="post">
                     {{csrf_field()}}
                     <input type="hidden" name="id_turma" value="{{$turmas->idTurma}}">
                     <input type="hidden" name="id_aluno" value="{{$aluno->id}}">
-                  <button class="waves-effect waves-light btn indigo lighten-2">Deletar</button>
+                  <button class="waves-effect waves-light btn indigo lighten-2 right">Deletar</button>
                   </form>
               </td>
             </tr>
           @endforeach
-        </thead>
-        <tbody>
-
         </tbody>
       </table>
     </div>
@@ -163,6 +161,48 @@
 </div>
 
 <!-- Fim modal editar -->
+
+<!-- Inicio modal solicitações -->
+
+<div class="modal modal-fixed-footer" id="modal-solicitacoes">
+    <div class="modal-content">
+
+      <h4 class="light">Solicitações</h4>
+      <h6>Aceite os alunos dessa turma que você ensina</h6>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Foto</th>
+            <th>Nome</th>
+            <th>RA</th>
+            <th></th>
+            <th></th>
+          </tr>
+
+        </thead>
+        <tbody>
+          @foreach($alunos as $aluno)
+            <tr>
+              <td><img height="60" class="circle" src="{{asset($aluno->foto_perfil)}}"/></td>
+              <td>{{ $aluno->name }}</td>
+              <td>{{ $aluno->ra }}</td>
+              <td><button class="waves-effect waves-light btn red right">Recusar</button></td>
+              <td><button class="waves-effect waves-light btn indigo lighten-2" type="button" name="button">Aceitar</button> </td>
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+
+    <div class="modal-footer">
+        <a class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- Fim modal solicitações -->
+
 
 @endforeach
 
