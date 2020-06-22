@@ -106,13 +106,43 @@ class profSalaController extends Controller
     {
 
       $dados = $req->all();
+      $aceita_aluno = Sala::where('idTurma',$dados['id_turma'])
+                          ->where('idAluno',$dados['id_aluno'])
+                          ->update(['situacao' => "aceito"]);
+
+      if($aceita_aluno)
+      {
+        return redirect()->route('professor.index');
+        //Aluno aceito com sucesso!
+      }
+      else {
+        return redirect()->route('professor.index');
+        //Erro nao foi possivel aceitar esse aluno!
+      }
 
 
     }
 
+
+
+
     public function recusarAlunos(Request $req)
     {
       $dados = $req->all();
+
+      $atualiza_solicitacao = Sala::where('idTurma',$dados['id_turma'])
+                                  ->where('idAluno',$dados['id_aluno'])
+                                  ->delete();
+
+      if($atualiza_solicitacao)
+      {
+      return redirect()->route('professor.index');
+      //Aluno recusado com sucesso!
+      }
+      else {
+      return redirect()->route('professor.index');
+      //Erro nao foi possivel recusar esse aluno!
+      }
     }
 
 

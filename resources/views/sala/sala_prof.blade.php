@@ -157,6 +157,8 @@
       <button class="waves-effect waves-light btn indigo lighten-2">Entrar</button>
       <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
 
+    </form>
+
   </div>
 </div>
 
@@ -194,22 +196,27 @@
               <td>{{ $aluno->name }}</td>
               <td>{{ $aluno->ra }}</td>
 
-              <form class="" action="{{ route('')}}" method="post">
+              <form class="" action="{{ route('professor.sala.recusarAlunos')}}" method="post">
                 {{csrf_field()}}
 
               <input type="hidden" name="id_aluno" value="{{$aluno->id}}">
+              <input type="hidden" name="id_turma" value="{{$turmas->idTurma}}">
 
               <td><button class="waves-effect waves-light btn red right">Recusar</button></td>
+
               </form>
 
 
 
-              <form class="" action="{{ route('')}}" method="post">
+              <form class="" action="{{ route('professor.sala.aceitarAlunos')}}" method="post">
               {{csrf_field()}}
 
               <input type="hidden" name="id_aluno" value="{{$aluno->id}}">
+              <input type="hidden" name="id_turma" value="{{$turmas->idTurma}}">
 
-              <td><button class="waves-effect waves-light btn indigo lighten-2" type="button" name="button">Aceitar</button> </td>
+
+              <td><button class="waves-effect waves-light btn indigo lighten-2">Aceitar</button></td>
+
               </form>
 
 
