@@ -138,6 +138,7 @@
           <span class="card-title">{{$turma->disciplina}}</span>
         </div>
         <div class="card-content">
+          <span class="new badge tooltipped red" data-badge-caption=" Novas Solicitações" data-position="bottom" data-tooltip="Novas solicitações para entrar na turma"> <b>4</b> </span>
           <p>Código: {{$turma->idTurma}}</p>
         </div>
         <div class="card-action">
@@ -147,7 +148,10 @@
               <input type="hidden" name="idTurma" value="{{$turma->idTurma}}">
 
               <button class="waves-effect waves-light btn indigo lighten-2">Ver turma</button>
+
           </form>
+
+
 
 
         </div>
