@@ -100,6 +100,33 @@ class alunoController extends Controller
         }
 
       }
+    }
+
+
+
+      public function indexSala()
+      {
+        return view('aluno.adicionarSala');
+      }
+
+
+
+
+      public function entrarSala(Request $req)
+      {
+        $dados = $req->all();
+        $id = auth()->user()->id;
+
+        Sala::create([
+          'idTurma' => $dados['codigo'],
+          'idAluno' => $id,
+          'situacao' => 'pendente',
+        ]);
+
+          return redirect()->route('aluno.index');
+
+
+      }
 
 
 
@@ -110,5 +137,3 @@ class alunoController extends Controller
 
 
     }
-
-}

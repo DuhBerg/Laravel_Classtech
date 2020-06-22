@@ -62,7 +62,7 @@
 <div id="alunos" class="col s12">
   <a href="#modal-solicitacoes" class=" modal-trigger btn waves-effect waves-light indigo lighten-2">Solicitações</a>
 
-  @if(!empty($alunos))
+  @if(!empty($alunos_aceitos_array))
 
   <div class="container">
     <div class="row">
@@ -76,7 +76,7 @@
           </tr>
         </thead>
         <tbody>
-          @foreach($alunos as $aluno)
+          @foreach($alunos_aceitos_array as $aluno)
             <tr>
               <td><img height="60" class="circle" src="{{asset($aluno->foto_perfil)}}"/></td>
               <td>{{ $aluno->name }}</td>
@@ -162,11 +162,17 @@
 
 <!-- Fim modal editar -->
 
+
+
+
+
 <!-- Inicio modal solicitações -->
 
 <div class="modal modal-fixed-footer" id="modal-solicitacoes">
     <div class="modal-content">
 
+
+      @if(!empty($alunos_pendentes_array))
       <h4 class="light">Solicitações</h4>
       <h6>Aceite os alunos dessa turma que você ensina</h6>
 
@@ -182,13 +188,31 @@
 
         </thead>
         <tbody>
-          @foreach($alunos as $aluno)
+          @foreach($alunos_pendentes_array as $aluno)
             <tr>
               <td><img height="60" class="circle" src="{{asset($aluno->foto_perfil)}}"/></td>
               <td>{{ $aluno->name }}</td>
               <td>{{ $aluno->ra }}</td>
+
+              <form class="" action="{{ route('')}}" method="post">
+                {{csrf_field()}}
+
+              <input type="hidden" name="id_aluno" value="{{$aluno->id}}">
+
               <td><button class="waves-effect waves-light btn red right">Recusar</button></td>
+              </form>
+
+
+
+              <form class="" action="{{ route('')}}" method="post">
+              {{csrf_field()}}
+
+              <input type="hidden" name="id_aluno" value="{{$aluno->id}}">
+
               <td><button class="waves-effect waves-light btn indigo lighten-2" type="button" name="button">Aceitar</button> </td>
+              </form>
+
+
             </tr>
           @endforeach
         </tbody>
@@ -197,6 +221,10 @@
     <div class="modal-footer">
         <a class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
     </div>
+    @else
+    <h4 class="light">Você não possui solicitações!</h4>
+
+    @endif
   </div>
 </div>
 

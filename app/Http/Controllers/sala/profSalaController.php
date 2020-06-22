@@ -1,5 +1,8 @@
 <?php
 
+
+
+
 namespace App\Http\Controllers\sala;
 
 use App\Http\Controllers\Controller;
@@ -9,7 +12,7 @@ use Auth;
 use App\Sala;
 use App\User;
 
-class salaController extends Controller
+class profSalaController extends Controller
 {
     //
 
@@ -20,23 +23,43 @@ class salaController extends Controller
 
       $turma = Turma::select('*')->where('idTurma', $dados['idTurma'])->get();
 
-      $nAlunos = Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
+      $alunos_aceitos = Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
       ->select('salas.idAluno')
-      ->where('salas.idTurma', $dados['idTurma'])
+      ->where('salas.idTurma', $dados['idTurma'])->where('salas.situacao',"aceito")
       ->get();
 
-      $alunos = array();
+
+      $alunos_pendentes = Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
+      ->select('salas.idAluno')
+      ->where('salas.idTurma', $dados['idTurma'])->where('salas.situacao',"pendente")
+      ->get();
+
+
+      $alunos_aceitos_array = array();
+      $alunos_pendentes_array = array();
+
 
 
         $count = 0;
-        foreach ($nAlunos as $aluno) {
+        foreach ($alunos_aceitos as $aluno_aceito) {
           $count = $count + 1;
 
-          array_push($alunos, User::select('*')->where('id',$aluno->idAluno)->first());
+          array_push($alunos_aceitos_array, User::select('*')->where('id',$aluno_aceito->idAluno)->first());
         }
 
-      return view('sala.sala_prof')->with(compact('user','turma','count','alunos'));
+
+        foreach ($alunos_pendentes as $aluno_pendente) {
+          $count = $count + 1;
+
+          array_push($alunos_pendentes_array, User::select('*')->where('id',$aluno_pendente->idAluno)->first());
+        }
+
+
+      return view('sala.sala_prof')->with(compact('user','turma','count','alunos_aceitos_array','alunos_pendentes_array'));
     }
+
+
+
 
     public function deletar(Request $req)
     {
@@ -76,6 +99,23 @@ class salaController extends Controller
 
 
     }
+
+
+
+    public function aceitarAlunos(Request $req)
+    {
+
+      $dados = $req->all();
+
+
+    }
+
+    public function recusarAlunos(Request $req)
+    {
+      $dados = $req->all();
+    }
+
+
 
 
 

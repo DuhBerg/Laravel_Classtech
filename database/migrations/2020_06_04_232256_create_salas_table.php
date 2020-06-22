@@ -17,6 +17,7 @@ class CreateSalasTable extends Migration
            $table->primary(['idTurma','idAluno']);
            $table->string('idTurma', 6);
            $table->string('idAluno');
+           $table->string('situacao');
            $table->timestamps();
         });
     }

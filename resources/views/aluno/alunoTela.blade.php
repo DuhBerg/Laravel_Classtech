@@ -28,7 +28,7 @@
 
     <h4 class="light">Entrar turma</h4>
 
-    <form style="padding-top:10px;" action="{{ route('aluno.sala.criar') }}" method="post">
+    <form style="padding-top:10px;" action="{{ route('aluno.sala.entrar') }}" method="post">
 
 
     <h6>Pergunte ao seu professor o código da sala e digite abaixo.</h6>
