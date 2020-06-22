@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+Route::get('/c','FullCalendarController@index')->name('index');
 Route::get('/',['as'=>'site','uses'=>'site\loginController@index']);
 Route::get('/index',['as'=>'site.index','uses'=>'site\siteController@index']);
 
@@ -57,8 +57,12 @@ Route::post('/professor/turmas/criar',['as'=>'professor.turmas.criar','uses'=>'p
 Route::get('/admin',['as'=>'admin.index','uses'=>'admin\adminController@index']);
 Route::post('/admin/criar',['as'=>'admin.criar','uses'=>'admin\adminController@criar']);
 
-Route::post('/sala',['as'=>'sala.index','uses'=>'sala\salaController@index']);
-Route::post('/sala/deletar',['as'=>'sala.deletar_aluno','uses'=>'sala\salaController@deletar']);
-Route::post('/sala/editar',['as'=>'sala.editar_nome','uses'=>'sala\salaController@editar']);
+//Professor
+Route::post('professor/sala',['as'=>'professor.sala.index','uses'=>'sala\salaController@index']);
+Route::post('professor/sala/deletar',['as'=>'professor.sala.deletar_aluno','uses'=>'sala\salaController@deletar']);
+Route::post('professor/sala/editar',['as'=>'professor.sala.editar_nome','uses'=>'sala\salaController@editar']);
+
+//Aluno
+Route::post('aluno/sala',['as'=>'aluno.sala.index','uses'=>'sala\alunoSalaController@index']);
 
 });
