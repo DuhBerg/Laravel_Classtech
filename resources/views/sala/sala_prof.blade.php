@@ -60,44 +60,7 @@
 <!-- Inicio tab alunos -->
 
 <div id="alunos" class="col s12">
-<<<<<<< HEAD
 
-  <div class="container">
-
-    <table>
-        <thead class="centered">
-          <tr>
-              <th>nº</th>
-              <th>Foto</th>
-              <th>Nome</th>
-              <th>RA</th>
-              <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-
-          <!-- INICIO FOREACH -->
-
-
-          <tr>
-            <td>1<!-- COLOCAR INCREMENT --></td>
-            <td><img class="circle foto-aluno z-depth-1" src="{{$user->foto_perfil}}"></td>
-            <td>Exemplo Nome</td>
-            <td>52541</td>
-            <td> <a href="#" class="waves-effect waves-light btn red right">Remover</a> </td>
-          </tr>
-
-
-          <!-- FIM FOREACH -->
-
-
-        </tbody>
-      </table>
-
-  </div>
-
-=======
   @if(!empty($alunos))
 
   <center><h1>Alunos</h1></center>
@@ -139,7 +102,7 @@
     <h3 align="center">Você ainda não possui alunos!</h3>
 
     @endif
->>>>>>> 1bb8a6b67c1d8ddb528f97fd5324149a625bf119
+
 </div>
 </div>
 
