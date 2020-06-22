@@ -38,7 +38,7 @@
           </div>
           <div class="card-content">
             <p>Código: {{$turmas->idTurma}}</p>
-            <p style="padding-top:15px;">20 alunos</p>
+            <p style="padding-top:15px;">{{ $count}} Aluno(s)</p>
           </div>
         </div>
       </div>
@@ -60,6 +60,7 @@
 <!-- Inicio tab alunos -->
 
 <div id="alunos" class="col s12">
+<<<<<<< HEAD
 
   <div class="container">
 
@@ -96,7 +97,54 @@
 
   </div>
 
+=======
+  @if(!empty($alunos))
+
+  <center><h1>Alunos</h1></center>
+  <div class="container">
+
+    <h3 class="center">Lista de cursos</h3>
+    <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>RA</th>
+            <th>Imagem</th>
+          </tr>
+          @foreach($alunos as $aluno)
+            <tr>
+              <td>{{ $aluno->name }}</td>
+              <td>{{ $aluno->ra }}</td>
+              <td><img height="60" src="{{asset($aluno->foto_perfil)}}"/></td>
+              <td>
+                  <form action="{{ route('sala.deletar_aluno')}}" method="post">
+                    {{csrf_field()}}
+                    <input type="hidden" name="id_turma" value="{{$turmas->idTurma}}">
+                    <input type="hidden" name="id_aluno" value="{{$aluno->id}}">
+                  <button class="waves-effect waves-light btn indigo lighten-2">Deletar</button>
+                  </form>
+              </td>
+            </tr>
+          @endforeach
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+
+    @else
+
+    <h3 align="center">Você ainda não possui alunos!</h3>
+
+    @endif
+>>>>>>> 1bb8a6b67c1d8ddb528f97fd5324149a625bf119
 </div>
+</div>
+
+
+
 
 <!-- Fim tab alunos -->
 
@@ -110,6 +158,13 @@
 
 <!-- Fim tab navbar conteudo -->
 
+
+
+
+
+
+
+
 <!-- Inicio modal editar -->
 
 <div class="modal modal-fixed-footer" id="modal-editar">
@@ -117,8 +172,8 @@
 
     <h4 class="light">Editar turma</h4>
 
-    <form style="padding-top:2px;" action="" method="post">
-
+    <form style="padding-top:2px;" action="{{ route('sala.editar_nome')}}" method="post">
+      {{csrf_field()}}
       <h5>Alterar nome</h5>
     <p> <b>Atenção!</b> Coloque a matéria e a turma que você ensina caso for alterar o nome</p>
     <p> <b>Exemplo:</b> Matemática - 1º ano </p>
@@ -128,8 +183,9 @@
 
     <div style="padding: 5px;" class="row">
       <div class="input-field">
-        <input type="text" name="SLA" id="SLA">
-        <label for="SLA">Matéria e turma</label>
+        <input type="text" name="nome_turma" id="nome_turma">
+        <label for="nome_turma">Matéria e turma</label>
+        <input type="hidden" name="id_turma" value="{{$turmas->idTurma}}">
       </div>
     </div>
 

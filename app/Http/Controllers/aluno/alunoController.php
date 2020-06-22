@@ -24,6 +24,8 @@ class alunoController extends Controller
       ->where('salas.idAluno', $user['id'])
       ->get();
 
+//      select id, nome from Produtos where nome is null;
+
 
         if(!isset($user['email']) || $user['email'] == ""){
           return view('aluno.addEmail',compact('user'));
@@ -60,6 +62,7 @@ class alunoController extends Controller
       return redirect()->route('aluno.index',compact($user,$salas));
 
     }
+
 
 
 
