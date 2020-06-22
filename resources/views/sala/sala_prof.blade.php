@@ -30,7 +30,7 @@
       <div class="col s12 m12 l12">
         <div class="card">
           <div class="card-image">
-            <img style="height:200px;object-fit:cover;" src="{{$turmas->foto_fundo}}">
+            <img style="height:200px;object-fit:cover;" src="{{asset($turmas->foto_fundo)}}">
             <span class="card-title">{{$turmas->disciplina}}</span>
              <a href="#modal-editar" class="modal-trigger btn-floating halfway-fab waves-effect waves-light indigo lighten-2">
                <i class="material-icons">edit</i>
@@ -82,7 +82,7 @@
               <td>{{ $aluno->name }}</td>
               <td>{{ $aluno->ra }}</td>
               <td>
-                  <form action="{{ route('sala.deletar_aluno')}}" method="post">
+                  <form action="{{ route('professor.sala.deletar_aluno')}}" method="post">
                     {{csrf_field()}}
                     <input type="hidden" name="id_turma" value="{{$turmas->idTurma}}">
                     <input type="hidden" name="id_aluno" value="{{$aluno->id}}">
@@ -133,7 +133,7 @@
 
     <h4 class="light">Editar turma</h4>
 
-    <form style="padding-top:2px;" action="{{ route('sala.editar_nome')}}" method="post">
+    <form style="padding-top:2px;" action="{{ route('professor.sala.editar_nome')}}" method="post">
       {{csrf_field()}}
       <h5>Alterar nome</h5>
     <p> <b>Atenção!</b> Coloque a matéria e a turma que você ensina caso for alterar o nome</p>

@@ -143,7 +143,7 @@
         </div>
         <div class="card-action">
 
-          <form action="{{ route('sala.index') }}" method="post">
+          <form action="{{ route('professor.sala.index') }}" method="post">
               {{ csrf_field() }}
               <input type="hidden" name="idTurma" value="{{$turma->idTurma}}">
 
