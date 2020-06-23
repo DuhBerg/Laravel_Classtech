@@ -16,7 +16,7 @@
           <li class="tab col s3 m3 l3"><a class="active" href="#curso">curso</a></li>
           <li class="tab col s3 m3 l3"><a href="#atividades">Atividades</a></li>
           <li class="tab col s3 m3 l3"><a href="#alunos">Alunos
-          <span class="new badge red" data-badge-caption=""> <b>4</b> </span></a></li>
+          <span class="badge-prof">4</span></a></li>
           <li class="tab col s3 m3 l3"><a href="#notas">Notas</a></li>
       </ul>
       </div>
