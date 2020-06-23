@@ -61,7 +61,7 @@ class loginController extends Controller
         return redirect()->route('admin.index');
       }
       else {
-        return redirect()->route('site.login')->with('warning', 'Senha ou e-mail incorreto!');
+        return back()->with('warning', 'Senha ou e-mail incorreto!');
 
       }
     }catch(\Illuminate\Database\QueryException $ex){

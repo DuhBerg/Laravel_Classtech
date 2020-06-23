@@ -93,11 +93,12 @@ class profSalaController extends Controller
 
       if($atualiza_sala)
       {
-        return redirect()->route('professor.index');
+        return redirect()->route('professor.index')->with('success', 'Nome alterado com sucesso!');
         //nome da turma atualizado com sucesso!
       }
+
       else {
-        return redirect()->route('professor.index');
+        return redirect()->route('professor.index')->with('warning', 'Por favor, insira um nome para turma!');
        //nao foi possível atualizar o nome da turma!;
       }
 
