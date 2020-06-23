@@ -81,12 +81,12 @@ class profSalaController extends Controller
 
       if($apaga_aluno)
       {
-        return redirect()->route('professor.index');
+        return $this->redirect_sala($dados['id_turma']);
         //aluno excluido com sucesso!
 
       }
       else {
-        return redirect()->route('professor.index');
+        return $this->redirect_sala($dados['id_turma']);
         //nao foi possível excluir o aluno!
       }
 
@@ -99,7 +99,7 @@ class profSalaController extends Controller
       $dados = $req->all();
       if($dados['nome_turma'] == "")
       {
-        return redirect()->route('professor.index')->with('warning', 'Por favor, insira um nome para turma!');
+        return $this->redirect_sala($dados['id_turma'])->with('warning', 'Por favor, insira um nome para turma!');
       }
       else
       {
@@ -108,11 +108,11 @@ class profSalaController extends Controller
 
             if($atualiza_sala)
             {
-              return redirect()->route('professor.index')->with('success', 'Nome alterado com sucesso!');
+              return $this->redirect_sala($dados['id_turma'])->with('success', 'Nome alterado com sucesso!');
               //nome da turma atualizado com sucesso!
             }
             else {
-              return redirect()->route('professor.index')->with('warning', 'Por favor, insira um nome para turma!');
+              return $this->redirect_sala($dados['id_turma'])->with('warning', 'Por favor, insira um nome para turma!');
              //nao foi possível atualizar o nome da turma!;
             }
           }
@@ -132,11 +132,11 @@ class profSalaController extends Controller
 
       if($aceita_aluno)
       {
-        return redirect()->route('professor.index');
+        return $this->redirect_sala($dados['id_turma']);
         //Aluno aceito com sucesso!
       }
       else {
-        return redirect()->route('professor.index');
+        return $this->redirect_sala($dados['id_turma']);
         //Erro nao foi possivel aceitar esse aluno!
       }
 
@@ -156,7 +156,7 @@ class profSalaController extends Controller
 
       if($atualiza_solicitacao)
       {
-        return $this->index($dados['id_turma']);
+      return redirect()->route('professor.index');
       //Aluno recusado com sucesso!
       }
       else {
@@ -166,6 +166,21 @@ class profSalaController extends Controller
     }
 
 
+
+
+
+    public function redirect_sala($idTurma)
+    {
+
+      $request = new \Illuminate\Http\Request();
+      $request->setMethod('POST');
+      $request->request->add(['idTurma' => $idTurma]);
+
+  //    return redirect()->action("sala\profSalaController@index", ['idTurma' => $request]);
+    //  return redirect()->route('professor.sala.index');
+
+      return $this->index($request); //funciona mas url fica zuado
+    }
 
 
 

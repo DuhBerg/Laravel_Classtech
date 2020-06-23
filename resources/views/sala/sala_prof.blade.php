@@ -61,10 +61,11 @@
 
 <div id="alunos" class="col s12">
 
-  @if(!empty($alunos_aceitos_array))
+
 
   <div class="container">
     <a href="#modal-solicitacoes" class=" modal-trigger btn waves-effect waves-light indigo lighten-2 right">Solicitações</a>
+    @if(!empty($alunos_aceitos_array))
     <div class="row">
       <table>
         <thead>
@@ -102,6 +103,7 @@
     @endif
 
 </div>
+
 </div>
 
 
