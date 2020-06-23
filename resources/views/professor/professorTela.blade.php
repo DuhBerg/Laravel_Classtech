@@ -138,7 +138,25 @@
           <span class="card-title">{{$turma->disciplina}}</span>
         </div>
         <div class="card-content">
-          <span class="new badge tooltipped red" data-badge-caption=" Novas Solicitações" data-position="bottom" data-tooltip="Novas solicitações para entrar na turma"> <b>4</b> </span>
+
+      <b>
+          {{
+             $count = App\Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
+                          ->where('salas.idTurma', $turma->idTurma)->where('situacao',"pendente")
+                          ->count()}}
+
+                          @if($count != 0)
+
+                          {{$count}}
+
+                          @endif
+
+          </b>
+
+
+        <span class="new badge tooltipped red" data-badge-caption=" Novas Solicitações"
+        data-position="bottom" data-tooltip="Novas solicitações para entrar na turma">
+          </span>
           <p>Código: {{$turma->idTurma}}</p>
         </div>
         <div class="card-action">
@@ -157,8 +175,7 @@
         </div>
       </div>
     </div>
-
-    @endforeach
+      @endforeach
 
 
 

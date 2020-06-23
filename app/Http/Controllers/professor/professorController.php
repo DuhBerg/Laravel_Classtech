@@ -16,6 +16,7 @@ class professorController extends Controller
     $turmas= Turma::select('*')
     ->where('idProfessor', $user['id'])
     ->get();
+
     return view('professor.professorTela',compact('user','turmas'));
   }
 }

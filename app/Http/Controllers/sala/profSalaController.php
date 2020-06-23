@@ -40,23 +40,27 @@ class profSalaController extends Controller
 
 
 
-        $count = 0;
+        $count_aceitos = 0;
+        $count_pendentes = 0;
         foreach ($alunos_aceitos as $aluno_aceito) {
-          $count = $count + 1;
+          $count_aceitos = $count_aceitos + 1;
 
           array_push($alunos_aceitos_array, User::select('*')->where('id',$aluno_aceito->idAluno)->first());
         }
 
 
         foreach ($alunos_pendentes as $aluno_pendente) {
-          $count = $count + 1;
+          $count_pendentes = $count_pendentes + 1;
 
           array_push($alunos_pendentes_array, User::select('*')->where('id',$aluno_pendente->idAluno)->first());
         }
 
 
-      return view('sala.sala_prof')->with(compact('user','turma','count','alunos_aceitos_array','alunos_pendentes_array'));
+      return view('sala.sala_prof')->with(compact('user','turma','count_aceitos','count_pendentes','alunos_aceitos_array','alunos_pendentes_array'));
     }
+
+
+
 
 
 

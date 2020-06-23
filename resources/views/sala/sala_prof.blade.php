@@ -38,7 +38,7 @@
           </div>
           <div class="card-content">
             <p>Código: {{$turmas->idTurma}}</p>
-            <p style="padding-top:15px;">{{ $count}} Aluno(s)</p>
+            <p style="padding-top:15px;">{{ $count_aceitos}} Aluno(s)</p>
           </div>
         </div>
       </div>
