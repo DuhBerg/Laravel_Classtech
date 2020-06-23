@@ -139,24 +139,22 @@
         </div>
         <div class="card-content">
 
-      <b>
-          {{
-             $count = App\Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
-                          ->where('salas.idTurma', $turma->idTurma)->where('situacao',"pendente")
-                          ->count()}}
 
-                          @if($count != 0)
+        <?php
+        $count = App\Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
+                    ->where('salas.idTurma', $turma->idTurma)->where('situacao',"pendente")
+                    ->count();
+         ?>
 
-                          {{$count}}
 
-                          @endif
-
-          </b>
-
+            @if($count != 0)
 
         <span class="new badge tooltipped red" data-badge-caption=" Novas Solicitações"
         data-position="bottom" data-tooltip="Novas solicitações para entrar na turma">
+            {{$count}}
           </span>
+
+            @endif
           <p>Código: {{$turma->idTurma}}</p>
         </div>
         <div class="card-action">

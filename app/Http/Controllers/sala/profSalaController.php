@@ -16,6 +16,11 @@ class profSalaController extends Controller
 {
     //
 
+
+
+
+
+
     public function index(Request $req)
     {
       $dados = $req->all();
@@ -65,6 +70,9 @@ class profSalaController extends Controller
 
 
 
+
+
+
     public function deletar(Request $req)
     {
       $dados = $req->all();
@@ -89,17 +97,25 @@ class profSalaController extends Controller
     public function editar(Request $req)
     {
       $dados = $req->all();
-      $atualiza_sala = Turma::where('idTurma',$dados['id_turma'])->update(['disciplina' => $dados['nome_turma']]);
-
-      if($atualiza_sala)
+      if($dados['nome_turma'] == "")
       {
-        return redirect()->route('professor.index');
-        //nome da turma atualizado com sucesso!
+        return redirect()->route('professor.index')->with('warning', 'Por favor, insira um nome para turma!');
       }
-      else {
-        return redirect()->route('professor.index');
-       //nao foi possível atualizar o nome da turma!;
-      }
+      else
+      {
+            $atualiza_sala = Turma::where('idTurma',$dados['id_turma'])->update(['disciplina' => $dados['nome_turma']]);
+
+
+            if($atualiza_sala)
+            {
+              return redirect()->route('professor.index')->with('success', 'Nome alterado com sucesso!');
+              //nome da turma atualizado com sucesso!
+            }
+            else {
+              return redirect()->route('professor.index')->with('warning', 'Por favor, insira um nome para turma!');
+             //nao foi possível atualizar o nome da turma!;
+            }
+          }
 
 
     }
@@ -140,7 +156,7 @@ class profSalaController extends Controller
 
       if($atualiza_solicitacao)
       {
-      return redirect()->route('professor.index');
+        return $this->index($dados['id_turma']);
       //Aluno recusado com sucesso!
       }
       else {
@@ -148,6 +164,10 @@ class profSalaController extends Controller
       //Erro nao foi possivel recusar esse aluno!
       }
     }
+
+
+
+
 
 
 

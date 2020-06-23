@@ -65,6 +65,10 @@
   @if(!empty($alunos_aceitos_array))
 
   <div class="container">
+
+
+    <a href="#modal-solicitacoes" class=" modal-trigger btn waves-effect waves-light indigo lighten-2 right">Solicitações</a>
+
     <div class="row">
       <table>
         <thead>
