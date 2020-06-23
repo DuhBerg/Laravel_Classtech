@@ -144,7 +144,15 @@
         $count = App\Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
                     ->where('salas.idTurma', $turma->idTurma)->where('situacao',"pendente")
                     ->count();
+
+
+
          ?>
+
+            @if($count != 0)
+
+
+
 
 
             @if($count != 0)

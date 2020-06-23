@@ -60,15 +60,11 @@
 <!-- Inicio tab alunos -->
 
 <div id="alunos" class="col s12">
-  <a href="#modal-solicitacoes" class=" modal-trigger btn waves-effect waves-light indigo lighten-2">Solicitações</a>
 
   @if(!empty($alunos_aceitos_array))
 
   <div class="container">
-
-
     <a href="#modal-solicitacoes" class=" modal-trigger btn waves-effect waves-light indigo lighten-2 right">Solicitações</a>
-
     <div class="row">
       <table>
         <thead>
@@ -82,7 +78,7 @@
         <tbody>
           @foreach($alunos_aceitos_array as $aluno)
             <tr>
-              <td><img height="60" class="circle" src="{{asset($aluno->foto_perfil)}}"/></td>
+              <td><img style="height:60px;width:60px;object-fit:cover;" class="circle" src="{{asset($aluno->foto_perfil)}}"/></td>
               <td>{{ $aluno->name }}</td>
               <td>{{ $aluno->ra }}</td>
               <td>
@@ -158,7 +154,7 @@
 
   <div class="modal-footer">
 
-      <button class="waves-effect waves-light btn indigo lighten-2">Entrar</button>
+      <button class="waves-effect waves-light btn indigo lighten-2">Confirmar</button>
       <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
 
     </form>
@@ -196,7 +192,7 @@
         <tbody>
           @foreach($alunos_pendentes_array as $aluno)
             <tr>
-              <td><img height="60" class="circle" src="{{asset($aluno->foto_perfil)}}"/></td>
+              <td><img style="height:60px;width:60px;object-fit:cover;" class="circle" src="{{asset($aluno->foto_perfil)}}"/></td>
               <td>{{ $aluno->name }}</td>
               <td>{{ $aluno->ra }}</td>
 
@@ -228,16 +224,17 @@
           @endforeach
         </tbody>
       </table>
-
+        @else
+          <h4 class="center light">Você não possui solicitações!</h4>
+        @endif
+    </div>
     <div class="modal-footer">
         <a class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
     </div>
-    @else
-    <h4 class="light">Você não possui solicitações!</h4>
-
-    @endif
   </div>
 </div>
+
+
 
 
 <!-- Fim modal solicitações -->
