@@ -94,24 +94,13 @@
               src="img/fotos-tema/tema_4.jpg">
           </label>
 
-          <label>
-            <input type="radio" name="foto_fundo" value="img/fotos-tema/tema_5.jpg">
-              <img style="padding: 0px;" class="col s12 m6 l6 tema"
-              src="img/fotos-tema/tema_5.jpg">
-          </label>
-
-          <label>
-            <input type="radio" name="foto_fundo" value="img/fotos-tema/tema_6.jpg">
-              <img style="padding: 0px;" class="col s12 m6 l6 tema"
-              src="img/fotos-tema/tema_6.jpg">
-          </label>
-
         </div>
       </div>
     </div>
 
   <div class="modal-footer">
     <button class="waves-effect waves-light btn indigo lighten-2">Criar</button>
+    <a class="modal-action modal-close waves-effect waves-red btn-flat">Voltar</a>
   </div>
 </div>
 
