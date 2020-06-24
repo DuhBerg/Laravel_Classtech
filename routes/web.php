@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/c','FullCalendarController@index')->name('index');
+Route::get('/load-events', 'EventController@loadEvents')->name('routeLoadEvents');
+
+
 Route::get('/',['as'=>'site','uses'=>'site\loginController@index']);
 Route::get('/index',['as'=>'site.index','uses'=>'site\siteController@index']);
 
