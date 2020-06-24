@@ -125,18 +125,29 @@ class profSalaController extends Controller
     public function aceitarAlunos(Request $req)
     {
 
+
+
+
       $dados = $req->all();
-      $aceita_aluno = Sala::where('idTurma',$dados['id_turma'])
-                          ->where('idAluno',$dados['id_aluno'])
+      $aceita_aluno = Sala::where('idTurma',$dados['idTurma'])
+                          ->where('idAluno',$dados['idAluno'])
                           ->update(['situacao' => "aceito"]);
 
       if($aceita_aluno)
       {
-        return $this->redirect_sala($dados['id_turma']);
+        // return $this->redirect_sala($dados['id_turma']);
+        $aceita['success'] = true;
+        $aceita['message'] = 'Aluno aceito com sucesso!';
+        echo json_encode($aceita);
+        return;
         //Aluno aceito com sucesso!
       }
       else {
-        return $this->redirect_sala($dados['id_turma']);
+        //return $this->redirect_sala($dados['id_turma']);
+        $aceita['success'] = false;
+        $aceita['message'] = 'Erro nao foi possivel aceitar esse aluno!';
+        echo json_encode($aceita);
+        return;
         //Erro nao foi possivel aceitar esse aluno!
       }
 
@@ -150,17 +161,22 @@ class profSalaController extends Controller
     {
       $dados = $req->all();
 
-      $atualiza_solicitacao = Sala::where('idTurma',$dados['id_turma'])
-                                  ->where('idAluno',$dados['id_aluno'])
+      $atualiza_solicitacao = Sala::where('idTurma',$dados['idTurma'])
+                                  ->where('idAluno',$dados['idAluno'])
                                   ->delete();
 
       if($atualiza_solicitacao)
       {
-      return redirect()->route('professor.index');
+      $recusa['success'] = true;
+      $recusa['message'] = 'Aluno recusado com sucesso!';
+      echo json_encode($recusa);
+
       //Aluno recusado com sucesso!
       }
       else {
-      return redirect()->route('professor.index');
+      $recusa['success'] = false;
+      $recusa['message'] = 'Não foi possível recusar esse aluno!';
+      echo json_encode($recusa);
       //Erro nao foi possivel recusar esse aluno!
       }
     }
