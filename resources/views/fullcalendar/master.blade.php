@@ -1,9 +1,12 @@
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset='utf-8' />
-<link href='../lib/main.css' rel='stylesheet' />
-<script src='../lib/main.js'></script>
+
+<link href='{{asset('assets/lib/main.css')}}' rel='stylesheet' />
+<script src='{{asset('assets/lib/script.js')}}'></script>
+<script src='{{asset('assets/lib/main.js')}}'></script>
+<script src='{{asset('assets/lib/locales-all.js')}}'></script>
+
 <script>
 
   document.addEventListener('DOMContentLoaded', function() {
@@ -21,18 +24,7 @@
       }
     });
 
-    //// the individual way to do it
-    // var containerEl = document.getElementById('external-events-list');
-    // var eventEls = Array.prototype.slice.call(
-    //   containerEl.querySelectorAll('.fc-event')
-     //);
-     //eventEls.forEach(function(eventEl) {
-      // new FullCalendar.Draggable(eventEl, {
-      //   eventData: {
-      //     title: eventEl.innerText.trim(),
-      //  }
-      // });
-     //});
+
 
     /* initialize the calendar
     -----------------------------------------------------------------*/
@@ -44,6 +36,8 @@
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
       },
+      locale:'pt-br',
+      navLinks: true,
       editable: true,
       droppable: true, // this allows things to be dropped onto the calendar
       drop: function(arg) {
@@ -52,62 +46,69 @@
           // if so, remove the element from the "Draggable Events" list
           arg.draggedEl.parentNode.removeChild(arg.draggedEl);
         }
-      }
+      },
+      events:
+        routeEvents('routeLoadEvents'),
+
     });
+
     calendar.render();
 
   });
+  console.log(routeEvents('teste'));
+
+
 
 </script>
 <style>
+body {
+  margin: 40px 10px;
+  padding: 0;
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 14px;
+}
 
-  body {
-    margin-top: 40px;
-    font-size: 14px;
-    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-  }
+#external-events {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  width: 150px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  background: #eee;
+  text-align: left;
+}
 
-  #external-events {
-    position: fixed;
-    left: 20px;
-    top: 20px;
-    width: 150px;
-    padding: 0 10px;
-    border: 1px solid #ccc;
-    background: #eee;
-    text-align: left;
-  }
+#external-events h4 {
+  font-size: 16px;
+  margin-top: 0;
+  padding-top: 1em;
+}
 
-  #external-events h4 {
-    font-size: 16px;
-    margin-top: 0;
-    padding-top: 1em;
-  }
+#external-events .fc-event {
+  margin: 3px 0;
+  cursor: move;
+}
 
-  #external-events .fc-event {
-    margin: 3px 0;
-    cursor: move;
-  }
+#external-events p {
+  margin: 1.5em 0;
+  font-size: 11px;
+  color: #666;
+}
 
-  #external-events p {
-    margin: 1.5em 0;
-    font-size: 11px;
-    color: #666;
-  }
+#external-events p input {
+  margin: 0;
+  vertical-align: middle;
+}
 
-  #external-events p input {
-    margin: 0;
-    vertical-align: middle;
-  }
+#calendar-wrap {
+  margin-left: 200px;
+}
 
-  #calendar-wrap {
-    margin-left: 200px;
-  }
-
-  #calendar {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
+#calendar {
+  max-width: 1100px;
+  margin: 0 auto;
+}
 
 </style>
 </head>
@@ -142,7 +143,9 @@
     </div>
 
     <div id='calendar-wrap'>
-      <div id='calendar'></div>
+      <div
+      id='calendar' data-route-load-events=" {{route('routeLoadEvents') }}"
+       ></div>
     </div>
 
   </div>
