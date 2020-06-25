@@ -170,13 +170,14 @@ class profSalaController extends Controller
       $recusa['success'] = true;
       $recusa['message'] = 'Aluno recusado com sucesso!';
       echo json_encode($recusa);
-
+      return;
       //Aluno recusado com sucesso!
       }
       else {
       $recusa['success'] = false;
       $recusa['message'] = 'Não foi possível recusar esse aluno!';
       echo json_encode($recusa);
+      return;
       //Erro nao foi possivel recusar esse aluno!
       }
     }

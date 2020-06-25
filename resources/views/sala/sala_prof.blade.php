@@ -193,7 +193,7 @@
         </thead>
         <tbody>
           @foreach($alunos_pendentes_array as $aluno)
-            <tr>
+            <tr id="tr-aluno">
               <td><img style="height:60px;width:60px;object-fit:cover;" class="circle" src="{{asset($aluno->foto_perfil)}}"/></td>
               <td>{{ $aluno->name }}</td>
               <td>{{ $aluno->ra }}</td>
@@ -201,14 +201,14 @@
               <form class="" name="form_recusar">
                 {{csrf_field()}}
 
-              <input type="hidden" id="idAluno" name="id_aluno" value="{{$aluno->id}}">
-              <input type="hidden" id="idTurma" name="id_turma" value="{{$turmas->idTurma}}">
+              <input type="hidden" id="idAluno" name="idAluno" value="{{$aluno->id}}">
+              <input type="hidden" id="idTurma" name="idTurma" value="{{$turmas->idTurma}}">
 
-              <td><button class="waves-effect waves-light btn red right">Recusar</button></td>
+              <td><button id="btn-recusar" class="waves-effect waves-light btn red right">Recusar</button>
 
               </form>
 
-<!-- action="{{ route('professor.sala.aceitarAlunos')}}" method="post" -->
+
 
               <form class="" name="form_aceitar">
               {{csrf_field()}}
@@ -217,7 +217,7 @@
               <input type="hidden" id="idTurma" name="idTurma" value="{{$turmas->idTurma}}">
 
 
-              <td><button class="waves-effect waves-light btn indigo lighten-2">Aceitar</button></td>
+              <button style="right: 5px;" id="btn-aceitar" class="waves-effect waves-light btn indigo lighten-2 right">Aceitar</button></td>
 
               </form>
 
@@ -246,6 +246,7 @@
 
 
 <script>
+
 $(function(){
     $('form[name="form_aceitar"]').submit(function(event){
       event.preventDefault();
@@ -257,16 +258,19 @@ $(function(){
         dataType: 'json',
         success: function(response){
           console.log(response);
+          if(response.success === true){
+            document.querySelector('#tr-aluno').remove();
+          }
         }
       });
     });
 });
 
 
-
 $(function(){
     $('form[name="form_recusar"]').submit(function(event){
       event.preventDefault();
+
 
       $.ajax({
         url:  "{{ route('professor.sala.recusarAlunos') }}",
@@ -275,10 +279,16 @@ $(function(){
         dataType: 'json',
         success: function(response){
           console.log(response);
+          if(response.success === true){
+            document.querySelector('#tr-aluno').remove();
+          }
         }
       });
     });
 });
+
+
+
 
 
 
