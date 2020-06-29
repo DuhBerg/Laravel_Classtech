@@ -76,17 +76,41 @@ class profSalaController extends Controller
     public function deletar(Request $req)
     {
       $dados = $req->all();
-      $apaga_aluno = Sala::where('idTurma',$dados['id_turma'],['idAluno',$dados['id_aluno']])->delete();
+      $apaga_aluno = Sala::where('idTurma',$dados['id_turma'],['idAluno',$dados['id_aluno']])->first()->delete();
+
+
+
+
+
+      $alunos_aceitos = Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
+      ->select('salas.idAluno')
+      ->where('salas.idTurma', $dados['id_turma'])->where('salas.situacao',"aceito")
+      ->get();
+
+      $alunos_aceitos_array = array();
+
+      foreach($alunos_aceitos as $aluno)
+      {
+        array_push($alunos_aceitos_array, User::select('*')->where('id',$aluno->idAluno)->first());
+      }
+
 
 
       if($apaga_aluno)
       {
-        return $this->redirect_sala($dados['id_turma']);
+        $deleta['success'] = true;
+        $deleta['message'] = "Aluno excluido com sucesso!";
+        $deleta['alunos'] = $alunos_aceitos_array;
+        echo json_encode($deleta);
+        return;
         //aluno excluido com sucesso!
 
       }
       else {
-        return $this->redirect_sala($dados['id_turma']);
+        $deleta['success'] = false;
+        $deleta['message'] = "Não foi possível excluir o aluno!";
+        echo json_encode($deleta);
+        return;
         //nao foi possível excluir o aluno!
       }
 
@@ -94,12 +118,17 @@ class profSalaController extends Controller
     }
 
 
+
+
     public function editar(Request $req)
     {
       $dados = $req->all();
       if($dados['nome_turma'] == "")
       {
-        return $this->redirect_sala($dados['id_turma'])->with('warning', 'Por favor, insira um nome para turma!');
+        $editaSala['success'] = false;
+        $editaSala['message'] = "Não foi possível alterar o nome!";
+        echo json_encode($editaSala);
+        return;
       }
       else
       {
@@ -108,11 +137,18 @@ class profSalaController extends Controller
 
             if($atualiza_sala)
             {
-              return $this->redirect_sala($dados['id_turma'])->with('success', 'Nome alterado com sucesso!');
+              $editaSala['success'] = true;
+              $editaSala['message'] = "Nome alterado com sucesso!";
+              $editaSala['nome_turma'] = $dados['nome_turma'];
+              echo json_encode($editaSala);
+              return;
               //nome da turma atualizado com sucesso!
             }
             else {
-              return $this->redirect_sala($dados['id_turma'])->with('warning', 'Por favor, insira um nome para turma!');
+              $editaSala['success'] = false;
+              $editaSala['message'] = "Não foi possível alterar o nome!";
+              echo json_encode($editaSala);
+              return;
              //nao foi possível atualizar o nome da turma!;
             }
           }
@@ -129,26 +165,38 @@ class profSalaController extends Controller
 
 
       $dados = $req->all();
-      $aceita_aluno = Sala::where('idTurma',$dados['idTurma'])
-                          ->where('idAluno',$dados['idAluno'])
-                          ->update(['situacao' => "aceito"]);
+      $aceita_aluno = Sala::where('idTurma',$dados['idTurma'])->where('idAluno',$dados['idAluno'])->update(['situacao' => "aceito"]);
+
+      $alunos_pendentes = Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
+      ->select('salas.idAluno')
+      ->where('salas.idTurma', $dados['idTurma'])->where('salas.situacao',"pendente")
+      ->get();
+
+      $alunos_pendentes_array = array();
+      $count_pendentes = 0;
+
+      foreach ($alunos_pendentes as $aluno_pendente) {
+        $count_pendentes = $count_pendentes + 1;
+
+        array_push($alunos_pendentes_array, User::select('*')->where('id',$aluno_pendente->idAluno)->first());
+      }
+
+
+
 
       if($aceita_aluno)
       {
-        // return $this->redirect_sala($dados['id_turma']);
         $aceita['success'] = true;
         $aceita['message'] = 'Aluno aceito com sucesso!';
+        $aceita['alunos_notificacao'] = $count_pendentes;
         echo json_encode($aceita);
         return;
-        //Aluno aceito com sucesso!
       }
       else {
-        //return $this->redirect_sala($dados['id_turma']);
         $aceita['success'] = false;
         $aceita['message'] = 'Erro nao foi possivel aceitar esse aluno!';
         echo json_encode($aceita);
         return;
-        //Erro nao foi possivel aceitar esse aluno!
       }
 
 
@@ -165,10 +213,30 @@ class profSalaController extends Controller
                                   ->where('idAluno',$dados['idAluno'])
                                   ->delete();
 
+
+      $alunos_pendentes = Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
+      ->select('salas.idAluno')
+      ->where('salas.idTurma', $dados['idTurma'])->where('salas.situacao',"pendente")
+      ->get();
+
+      $alunos_pendentes_array = array();
+      $count_pendentes = 0;
+
+      foreach ($alunos_pendentes as $aluno_pendente) {
+        $count_pendentes = $count_pendentes + 1;
+
+        array_push($alunos_pendentes_array, User::select('*')->where('id',$aluno_pendente->idAluno)->first());
+      }
+
+
+
+
+
       if($atualiza_solicitacao)
       {
       $recusa['success'] = true;
       $recusa['message'] = 'Aluno recusado com sucesso!';
+      $recusa['alunos_notificacao'] = $count_pendentes;
       echo json_encode($recusa);
       return;
       //Aluno recusado com sucesso!

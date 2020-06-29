@@ -31,14 +31,14 @@
         <div class="card">
           <div class="card-image">
             <img style="height:200px;object-fit:cover;" src="{{asset($turmas->foto_fundo)}}">
-            <span class="card-title">{{$turmas->disciplina}}</span>
+            <span class="card-title" id="disciplina" >{{$turmas->disciplina}}</span>
              <a href="#modal-editar" class="modal-trigger btn-floating halfway-fab waves-effect waves-light indigo lighten-2">
                <i class="material-icons">edit</i>
              </a>
           </div>
           <div class="card-content">
             <p>Código: {{$turmas->idTurma}}</p>
-            <p style="padding-top:15px;">{{ $count_aceitos}} Aluno(s)</p>
+            <p style="padding-top:15px;" id="count-alunos">{{ $count_aceitos}} Aluno(s)</p>
           </div>
         </div>
       </div>
@@ -63,7 +63,7 @@
 
 
 
-  <div class="container">
+  <div class="container" id="table-alunos">
     <a href="#modal-solicitacoes" class=" modal-trigger btn waves-effect waves-light indigo lighten-2 right">Solicitações</a>
     @if(!empty($alunos_aceitos_array))
     <div class="row">
@@ -78,12 +78,12 @@
         </thead>
         <tbody>
           @foreach($alunos_aceitos_array as $aluno)
-            <tr>
+            <tr id="tr-aluno-aceito">
               <td><img style="height:60px;width:60px;object-fit:cover;" class="circle" src="{{asset($aluno->foto_perfil)}}"/></td>
               <td>{{ $aluno->name }}</td>
               <td>{{ $aluno->ra }}</td>
               <td>
-                  <form action="{{ route('professor.sala.deletar_aluno')}}" method="post">
+                  <form name="form_deletar">
                     {{csrf_field()}}
                     <input type="hidden" name="id_turma" value="{{$turmas->idTurma}}">
                     <input type="hidden" name="id_aluno" value="{{$aluno->id}}">
@@ -135,7 +135,7 @@
 
     <h4 class="light">Editar turma</h4>
 
-    <form style="padding-top:2px;" action="{{ route('professor.sala.editar_nome')}}" method="post">
+    <form style="padding-top:2px;" name="form_editar">
       {{csrf_field()}}
       <h5>Alterar nome</h5>
     <p> <b>Atenção!</b> Coloque a matéria e a turma que você ensina caso for alterar o nome</p>
@@ -258,8 +258,18 @@ $(function(){
         dataType: 'json',
         success: function(response){
           console.log(response);
-          if(response.success === true){
+          if(response.success === true)
+          {
             document.querySelector('#tr-aluno').remove();
+            if(response.alunos_notificacao != 0)
+            {
+              document.querySelector('#count-pendente').innerHTML = response.alunos_notificacao;
+            }
+            else {
+              document.querySelector('#count-pendente').remove();
+            }
+            console.log("pendentes = "+response.alunos_notificacao);
+
           }
         }
       });
@@ -281,10 +291,76 @@ $(function(){
           console.log(response);
           if(response.success === true){
             document.querySelector('#tr-aluno').remove();
+            if(response.alunos_notificacao != 0)
+            {
+              document.querySelector('#count-pendente').innerHTML = response.alunos_notificacao;
+            }
+            else {
+              document.querySelector('#count-pendente').remove();
+            }
           }
         }
       });
     });
+});
+
+
+
+$(function(){
+    $('form[name="form_editar"]').submit(function(event){
+      event.preventDefault();
+
+
+      $.ajax({
+        url: "{{ route('professor.sala.editar_nome') }}",
+        type: "post",
+        data: $(this).serialize(),
+        dataType: 'json',
+        success: function(dados)
+        {
+          console.log(dados);
+          if(dados.success === true)
+          {
+            document.querySelector('#disciplina').innerHTML = "<span class='card-title' id='disciplina'>"+ dados.nome_turma +"</span>";
+            
+          }
+        }
+      });
+    });
+});
+
+
+
+$(function(){
+  $('form[name="form_deletar"]').submit(function(event){
+    event.preventDefault();
+
+
+    $.ajax({
+      url: "{{ route('professor.sala.deletar_aluno') }}",
+      type: "post",
+      data: $(this).serialize(),
+      dataType: 'json',
+      success: function(deleta)
+      {
+        console.log(deleta);
+        if(deleta.success === true)
+        {
+          document.querySelector('#tr-aluno-aceito').remove();
+          console.log(deleta.alunos);
+
+          if(deleta.alunos.length == 0)
+          {
+            document.querySelector('#table-alunos').innerHTML = "<a href='#modal-solicitacoes' class='modal-trigger btn waves-effect waves-light indigo lighten-2 right'>Solicitações</a>"+
+            "<h3 align='center'>Você ainda não possui alunos!</h3>";
+            document.querySelector('#count-alunos').innerHTML = "<p style='padding-top:15px;' id='count-alunos'> 0 Aluno(s) </p>";
+            //alert("Nenhum aluno no curso!");
+          }
+        }
+      }
+
+    });
+  });
 });
 
 
