@@ -1,16 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 
@@ -67,6 +57,7 @@ Route::post('professor/sala/deletar',['as'=>'professor.sala.deletar_aluno','uses
 Route::post('professor/sala/editar',['as'=>'professor.sala.editar_nome','uses'=>'sala\profSalaController@editar']);
 Route::post('professor/sala/recusarAluno',['as'=>'professor.sala.recusarAlunos','uses'=>'sala\profSalaController@recusarAlunos']);
 Route::post('professor/sala/aceitarAluno',['as'=>'professor.sala.aceitarAlunos','uses'=>'sala\profSalaController@aceitarAlunos']);
+Route::post('/professor/sala/addAtividade',['as'=>'professor.sala.addAtividades','uses'=>'sala\profSalaController@adicionarAtividade']);
 
 //Aluno
 Route::post('/aluno/addEmail',['as'=>'aluno.addEmail','uses'=>'aluno\alunoController@criarEmail']);

@@ -32,12 +32,9 @@
           <div class="card-image">
             <img style="height:200px;object-fit:cover;" src="{{asset($turmas->foto_fundo)}}">
             <span class="card-title">{{$turmas->disciplina}}</span>
-            <a class="btn-floating halfway-fab waves-effect waves-light red">
-              <i class="material-icons">delete</i>
-            </a>
-            <a href="#modal-editar" style="right:70px;" class="modal-trigger btn-floating halfway-fab waves-effect waves-light indigo lighten-2">
-              <i class="material-icons">edit</i>
-            </a>
+             <a href="#modal-editar" class="modal-trigger btn-floating halfway-fab waves-effect waves-light indigo lighten-2">
+               <i class="material-icons">edit</i>
+             </a>
           </div>
           <div class="card-content">
             <p>Código: {{$turmas->idTurma}}</p>
@@ -53,9 +50,55 @@
 <!-- Fim tab home -->
 
 <!-- Inicio tab atividades -->
+{{
+$ldate = date('d/m/Y H:i:s')
+}}
+<script>
+function fctValidaData()
+{
+  var data = document.getElementById('txtDt').value;
+var objDate = new Date();
 
+objDate.setYear(data.split("/")[2]);
+objDate.setMonth(data.split("/")[1]  - 1);//- 1 pq em js é de 0 a 11 os meses
+objDate.setDate(data.split("/")[0]);
+
+if(objDate.getTime() > new Date().getTime()){
+  alert("O dia passado é maior que a data atual..");
+}
+if(objDate.getTime() < new Date().getTime()){
+  alert("O dia passado é menor que a data atual..");
+}else{
+  alert("Datas igual hoje OK");
+}
+}
+
+
+</script>
 <div id="atividades" class="col s12">
-  <h1>Atividades</h1>
+  <h1>Atividades</h1><br>
+  <form enctype="multipart/form-data" action="{{route('professor.sala.addAtividades')}}">
+    {{csrf_field()}}
+      <input type="hidden" name="idTurma" value="{{$turmas->idTurma}}">
+    Data inicio:
+    <input type='text' id='txtDt' name='txtDt' onblur='fctValidaData(this);'/>
+    Data Final:
+    <input type='text' id='txtDtFinal' name='txtDtFinal' onblur='fctValidaDataFinal;'/>
+
+
+    <div class="input-field">
+      <label for="Titulo">Titulo</label>
+      <input type="text" name="Titulo" id="titulo">
+    </div>
+
+
+
+
+    <button class="waves-effect waves-light btn indigo lighten-2" >Criar Atividade</button>
+
+</form>
+
+
 </div>
 
 <!-- Fim tab atividades -->
@@ -67,8 +110,7 @@
 
 
   <div class="container">
-    <a href="#modal-solicitacoes" class="btn-solicitacao btn-floating btn-large modal-trigger tooltipped indigo lighten-2 pulse"
-    data-position="left" data-tooltip="Solicitações"><i class="material-icons">person_add</i></a>
+    <a href="#modal-solicitacoes" class=" modal-trigger btn waves-effect waves-light indigo lighten-2 right">Solicitações</a>
     @if(!empty($alunos_aceitos_array))
     <div class="row">
       <table>
@@ -208,7 +250,7 @@
               <input type="hidden" id="idAluno" name="idAluno" value="{{$aluno->id}}">
               <input type="hidden" id="idTurma" name="idTurma" value="{{$turmas->idTurma}}">
 
-              <td><button id="btn-recusar" class="waves-effect waves-light btn red right">Recusar</button></td>
+              <td><button id="btn-recusar" class="waves-effect waves-light btn red right">Recusar</button>
 
               </form>
 
@@ -221,7 +263,7 @@
               <input type="hidden" id="idTurma" name="idTurma" value="{{$turmas->idTurma}}">
 
 
-              <td><button id="btn-aceitar" class="waves-effect waves-light btn indigo lighten-2">Aceitar</button></td>
+              <button style="right: 5px;" id="btn-aceitar" class="waves-effect waves-light btn indigo lighten-2 right">Aceitar</button></td>
 
               </form>
 

@@ -31,33 +31,22 @@ class turmaController extends Controller
 
       if(!isset($dados['foto_fundo']))
       return back()->with('warning', 'Seleciona uma foto de fundo!');
-
-
             else {
-
-
-
             Turma::create([
                 'idTurma' => $idTurma,
                 'idProfessor' => $id,
                 'disciplina' => $dados['disciplina'],
                 'foto_fundo' => $dados['foto_fundo'],
             ]);
-
-
           return redirect()->route('professor.index');
               }
-
       }
-
         catch(\Illuminate\Database\QueryException $ex)
         {
           return back()->with('warning', 'Preencha todos os campos!');
         }
 
     }
-
-
 
     public function randString($length){
          $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -70,6 +59,6 @@ class turmaController extends Controller
 
      }
 
-
+    
 
 }

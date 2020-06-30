@@ -62,12 +62,6 @@ class alunoController extends Controller
       return redirect()->route('aluno.index',compact($user,$salas));
 
     }
-
-
-
-
-
-
     public function confirmarEmail(Request $req)
     {
 
@@ -101,15 +95,10 @@ class alunoController extends Controller
 
       }
     }
-
-
-
       public function indexSala()
       {
         return view('aluno.adicionarSala');
       }
-
-
 
 
       public function entrarSala(Request $req)
