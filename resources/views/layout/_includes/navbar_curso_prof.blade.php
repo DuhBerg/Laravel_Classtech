@@ -1,9 +1,7 @@
 <nav class="nav-extended nav-wrapper-color">
     <div class="nav-wrapper nav-wrapper-color">
 
-
-
-      <a href="{{ route('site.index') }}" class="brand-logo"> <img src="{{asset('img/fotos-logo/logo-white.png')}}" alt="logo"> </a>
+      <a href="{{ route('site.index') }}" class="brand-logo"> <img src="../img/fotos-logo/logo-white.png" alt="logo"> </a>
 
       <a href="#" data-target="slide-out" class="sidenav-trigger right" style="display:block">
         <img class="circle btn-sidenav" src="{{asset($user->foto_perfil)}}">
@@ -19,7 +17,11 @@
           <li class="tab col s3 m3 l3"><a href="#atividades">Atividades</a></li>
           <li class="tab col s3 m3 l3"><a href="#alunos">Alunos
             @if($count_pendentes != 0)
+<<<<<<< HEAD
           <span class="badge-prof" id="count-pendente">{{$count_pendentes}}</span>
+=======
+          <span class="badge-prof responsive-badge">{{$count_pendentes}}</span></a></li>
+>>>>>>> 28fcb41a31d19270962c50d3985fae870c011760
             @endif
             </a></li>
 
