@@ -13,12 +13,28 @@ class SalaTableSeeder extends Seeder
     {
       \Illuminate\Support\Facades\DB::table('salas')->insert([
         [
-          'idTurma' => 'AAAAAA',
-          'idAluno' => '2',
-          'situacao' => 'oi amigo',
+          'idTurma' => 'MLMWYH',
+          'idAluno' => '9',
+          'situacao' => 'aceito',
 
+        ],
+
+        [
+          'idTurma' => 'MLMWYH',
+          'idAluno' => '10',
+          'situacao' => 'aceito',
+        ],
+        [
+          'idTurma' => 'MLMWYH',
+          'idAluno' => '11',
+          'situacao' => 'aceito',
+        ],
+        [
+          'idTurma' => 'MLMWYH',
+          'idAluno' => '12',
+          'situacao' => 'aceito',
         ]
-      ]); 
+      ]);
 
     }
 }

@@ -69,9 +69,9 @@ function fctValidaData()
   var data = document.getElementById('txtDt').value;
 var objDate = new Date();
 
-objDate.setYear(data.split("/")[2]);
+objDate.setYear(data.split("/")[0]);
 objDate.setMonth(data.split("/")[1]  - 1);//- 1 pq em js é de 0 a 11 os meses
-objDate.setDate(data.split("/")[0]);
+objDate.setDate(data.split("/")[2]);
 
 if(objDate.getTime() > new Date().getTime()){
   alert("O dia passado é maior que a data atual..");
@@ -87,13 +87,13 @@ if(objDate.getTime() < new Date().getTime()){
 </script>
 <div id="atividades" class="col s12">
   <h1>Atividades</h1><br>
-  <form enctype="multipart/form-data" action="{{route('professor.sala.addAtividades')}}">
+  <form enctype="multipart/form-data" action="{{route('professor.sala.addAtividades')}}" method="post">
     {{csrf_field()}}
       <input type="hidden" name="idTurma" value="{{$turmas->idTurma}}">
     Data inicio:
     <input type='text' id='txtDt' name='txtDt' onblur='fctValidaData(this);'/>
     Data Final:
-    <input type='text' id='txtDtFinal' name='txtDtFinal' onblur='fctValidaDataFinal;'/>
+    <input type='text' id='txtDtFinal' name="txtDtFinal" onblur='fctValidaDataFinal;'/>
 
 
     <div class="input-field">
@@ -143,8 +143,8 @@ if(objDate.getTime() < new Date().getTime()){
               <td>
                   <form name="form_deletar">
                     {{csrf_field()}}
-                    <input type="hidden" name="id_turma" value="{{$turmas->idTurma}}">
-                    <input type="hidden" name="id_aluno" value="{{$aluno->id}}">
+                    <input type="hidden" id="id_turma" name="id_turma" value="{{$turmas->idTurma}}">
+                    <input type="hidden" id="id_aluno" name="id_aluno" value="{{$aluno->id}}">
                   <button class="waves-effect waves-light btn indigo lighten-2 right">Deletar</button>
                   </form>
               </td>
@@ -454,6 +454,7 @@ $(function(){
         console.log(deleta);
         if(deleta.success === true)
         {
+          console.log(document.getElementById("id_aluno").value);
           document.querySelector('#tr-aluno-aceito').remove();
           console.log(deleta.alunos);
 

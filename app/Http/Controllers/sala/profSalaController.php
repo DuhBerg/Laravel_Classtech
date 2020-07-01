@@ -55,13 +55,19 @@ class profSalaController extends Controller
       return view('sala.sala_prof')->with(compact('user','turma','count_aceitos','count_pendentes','alunos_aceitos_array','alunos_pendentes_array'));
     }
 
+
+
+
+
+
+
+
+
+
     public function deletar(Request $req)
     {
       $dados = $req->all();
       $apaga_aluno = Sala::where('idTurma',$dados['id_turma'],['idAluno',$dados['id_aluno']])->first()->delete();
-
-
-
 
 
       $alunos_aceitos = Sala::join('turma', 'salas.idTurma', '=', 'turma.idTurma')
@@ -99,6 +105,11 @@ class profSalaController extends Controller
 
     }
 
+
+
+
+
+
     public function editar(Request $req)
     {
       $dados = $req->all();
@@ -134,6 +145,10 @@ class profSalaController extends Controller
 
 
     }
+
+
+
+
     public function aceitarAlunos(Request $req)
     {
       $dados = $req->all();
@@ -173,6 +188,8 @@ class profSalaController extends Controller
 
 
     }
+
+
 
 
     public function recusarAlunos(Request $req)
@@ -221,6 +238,10 @@ class profSalaController extends Controller
     }
 
 
+
+
+
+
     public function adicionarAtividade(Request $req){
       try{
        $dados = $req->all();
@@ -233,21 +254,10 @@ class profSalaController extends Controller
      return redirect()->route('professor.index');
       }catch(\Illuminate\Database\QueryException $ex){
 
-        return back()->with('warning', 'Preencha todos os campos!');
+        dd($ex);
+        return redirect()->route('perfil.index');
       }
-
 }
-    public function redirect_sala($idTurma)
-    {
 
-      $request = new \Illuminate\Http\Request();
-      $request->setMethod('POST');
-      $request->request->add(['idTurma' => $idTurma]);
-
-  //    return redirect()->action("sala\profSalaController@index", ['idTurma' => $request]);
-    //  return redirect()->route('professor.sala.index');
-
-      return $this->index($request); //funciona mas url fica zuado
-    }
 
 }
