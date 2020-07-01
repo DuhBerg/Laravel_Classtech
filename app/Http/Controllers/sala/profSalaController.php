@@ -99,12 +99,6 @@ class profSalaController extends Controller
 
     }
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> c44238a06750b6fdb715c6d3e83397ea16e84855
     public function editar(Request $req)
     {
       $dados = $req->all();
