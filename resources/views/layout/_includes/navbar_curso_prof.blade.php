@@ -17,13 +17,11 @@
           <li class="tab col s3 m3 l3"><a href="#atividades">Atividades</a></li>
           <li class="tab col s3 m3 l3"><a href="#alunos">Alunos
             @if($count_pendentes != 0)
-<<<<<<< HEAD
+
           <span class="badge-prof" id="count-pendente">{{$count_pendentes}}</span>
-=======
-          <span class="badge-prof responsive-badge">{{$count_pendentes}}</span></a></li>
->>>>>>> 28fcb41a31d19270962c50d3985fae870c011760
+
             @endif
-            </a></li>
+
 
           <li class="tab col s3 m3 l3"><a href="#notas">Notas</a></li>
       </ul>

@@ -19,6 +19,7 @@
 
 @foreach($turma as $turmas)
 
+
 <!-- Inicio tab navbar conteudo -->
 
 <div id="curso" class="col s12">
@@ -65,15 +66,10 @@
 <div id="alunos" class="col s12">
 
 
-
-<<<<<<< HEAD
-  <div class="container" id="table-alunos">
-    <a href="#modal-solicitacoes" class=" modal-trigger btn waves-effect waves-light indigo lighten-2 right">Solicitações</a>
-=======
   <div class="container" id="table-alunos">
     <a href="#modal-solicitacoes" class="btn-solicitacao btn-floating btn-large modal-trigger tooltipped indigo lighten-2 pulse"
     data-position="left" data-tooltip="Solicitações"><i class="material-icons">person_add</i></a>
->>>>>>> 28fcb41a31d19270962c50d3985fae870c011760
+
     @if(!empty($alunos_aceitos_array))
     <div class="row">
       <table>
@@ -166,7 +162,7 @@
   <div class="modal-footer">
 
       <button class="waves-effect waves-light btn indigo lighten-2">Confirmar</button>
-      <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
+      <a class="modal-action modal-close waves-effect waves-red btn-flat">Fechar</a>
 
     </form>
 
@@ -207,16 +203,6 @@
               <td>{{ $aluno->name }}</td>
               <td>{{ $aluno->ra }}</td>
 
-              <form class="" name="form_recusar">
-                {{csrf_field()}}
-
-              <input type="hidden" id="idAluno" name="idAluno" value="{{$aluno->id}}">
-              <input type="hidden" id="idTurma" name="idTurma" value="{{$turmas->idTurma}}">
-
-              <td><button id="btn-recusar" class="waves-effect waves-light btn red right">Recusar</button></td>
-
-              </form>
-
 
 
               <form class="" name="form_aceitar">
@@ -226,10 +212,22 @@
               <input type="hidden" id="idTurma" name="idTurma" value="{{$turmas->idTurma}}">
 
 
-              <td><button id="btn-aceitar" class="waves-effect waves-light btn indigo lighten-2">Aceitar</button></td>
+              <td><button id="btn-aceitar" class="waves-effect waves-light btn indigo lighten-2 right">Aceitar</button></td>
 
               </form>
 
+
+
+
+              <form class="" name="form_recusar">
+                {{csrf_field()}}
+
+              <input type="hidden" id="idAluno" name="idAluno" value="{{$aluno->id}}">
+              <input type="hidden" id="idTurma" name="idTurma" value="{{$turmas->idTurma}}">
+
+              <td><button id="btn-recusar" class="waves-effect waves-light btn red">Recusar</button></td>
+
+              </form>
 
             </tr>
           @endforeach
@@ -282,6 +280,23 @@ $(function(){
           }
         }
       });
+
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        onOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: 'Aluno aceito'
+      })
     });
 });
 
@@ -290,26 +305,49 @@ $(function(){
     $('form[name="form_recusar"]').submit(function(event){
       event.preventDefault();
 
+      Swal.fire({
+        title: 'Você realmente deseja recusa-lo?',
+        text: false,
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonText: 'Não',
+        confirmButtonColor: '#7986cb',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sim'
+      }).then((result) => {
 
-      $.ajax({
-        url:  "{{ route('professor.sala.recusarAlunos') }}",
-        type: "post",
-        data: $(this).serialize(),
-        dataType: 'json',
-        success: function(response){
-          console.log(response);
-          if(response.success === true){
-            document.querySelector('#tr-aluno').remove();
-            if(response.alunos_notificacao != 0)
-            {
-              document.querySelector('#count-pendente').innerHTML = response.alunos_notificacao;
+        if (result.value) {
+
+          $.ajax({
+            url:  "{{ route('professor.sala.recusarAlunos') }}",
+            type: "post",
+            data: $(this).serialize(),
+            dataType: 'json',
+            success: function(response){
+              console.log(response);
+              if(response.success === true){
+                document.querySelector('#tr-aluno').remove();
+                if(response.alunos_notificacao != 0)
+                {
+                  document.querySelector('#count-pendente').innerHTML = response.alunos_notificacao;
+                }
+                else {
+                  document.querySelector('#count-pendente').remove();
+                }
+              }
             }
-            else {
-              document.querySelector('#count-pendente').remove();
-            }
-          }
+          });
+
+          Swal.fire(
+            'Aluno recusado!',
+            false,
+            'success'
+          )
         }
-      });
+      })
+
+
+
     });
 });
 
@@ -335,6 +373,14 @@ $(function(){
           }
         }
       });
+
+      Swal.fire(
+        'Nome alterado!',
+        false,
+        'success'
+      )
+
+
     });
 });
 
