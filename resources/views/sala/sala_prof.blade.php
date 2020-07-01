@@ -32,6 +32,12 @@
         <div class="card">
           <div class="card-image">
             <img style="height:200px;object-fit:cover;" src="{{asset($turmas->foto_fundo)}}">
+
+            <span class="card-title">{{$turmas->disciplina}}</span>
+             <a href="#modal-editar" class="modal-trigger btn-floating halfway-fab waves-effect waves-light indigo lighten-2">
+               <i class="material-icons">edit</i>
+             </a>
+
             <span class="card-title" id="disciplina">{{$turmas->disciplina}}</span>
             <a class="btn-floating halfway-fab waves-effect waves-light red">
               <i class="material-icons">delete</i>
@@ -54,9 +60,55 @@
 <!-- Fim tab home -->
 
 <!-- Inicio tab atividades -->
+{{
+$ldate = date('d/m/Y H:i:s')
+}}
+<script>
+function fctValidaData()
+{
+  var data = document.getElementById('txtDt').value;
+var objDate = new Date();
 
+objDate.setYear(data.split("/")[2]);
+objDate.setMonth(data.split("/")[1]  - 1);//- 1 pq em js é de 0 a 11 os meses
+objDate.setDate(data.split("/")[0]);
+
+if(objDate.getTime() > new Date().getTime()){
+  alert("O dia passado é maior que a data atual..");
+}
+if(objDate.getTime() < new Date().getTime()){
+  alert("O dia passado é menor que a data atual..");
+}else{
+  alert("Datas igual hoje OK");
+}
+}
+
+
+</script>
 <div id="atividades" class="col s12">
-  <h1>Atividades</h1>
+  <h1>Atividades</h1><br>
+  <form enctype="multipart/form-data" action="{{route('professor.sala.addAtividades')}}">
+    {{csrf_field()}}
+      <input type="hidden" name="idTurma" value="{{$turmas->idTurma}}">
+    Data inicio:
+    <input type='text' id='txtDt' name='txtDt' onblur='fctValidaData(this);'/>
+    Data Final:
+    <input type='text' id='txtDtFinal' name='txtDtFinal' onblur='fctValidaDataFinal;'/>
+
+
+    <div class="input-field">
+      <label for="Titulo">Titulo</label>
+      <input type="text" name="Titulo" id="titulo">
+    </div>
+
+
+
+
+    <button class="waves-effect waves-light btn indigo lighten-2" >Criar Atividade</button>
+
+</form>
+
+
 </div>
 
 <!-- Fim tab atividades -->
@@ -64,6 +116,7 @@
 <!-- Inicio tab alunos -->
 
 <div id="alunos" class="col s12">
+
 
 
   <div class="container" id="table-alunos">

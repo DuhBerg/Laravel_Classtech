@@ -14,7 +14,7 @@ class TurmaTableSeeder extends Seeder
       \Illuminate\Support\Facades\DB::table('turma')->insert([
         [
           'idturma' => 'AAAAAA',
-          'idProfessor' => '2',
+          'idProfessor' => '3',
           'disciplina' => 'VAI CARAIO',
           'foto_fundo' => 'default'
         ]

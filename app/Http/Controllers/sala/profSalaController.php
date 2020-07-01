@@ -1,8 +1,4 @@
 <?php
-
-
-
-
 namespace App\Http\Controllers\sala;
 
 use App\Http\Controllers\Controller;
@@ -11,15 +7,10 @@ use App\Turma;
 use Auth;
 use App\Sala;
 use App\User;
+use App\Atividade;
 
 class profSalaController extends Controller
 {
-    //
-
-
-
-
-
 
     public function index(Request $req)
     {
@@ -63,15 +54,6 @@ class profSalaController extends Controller
 
       return view('sala.sala_prof')->with(compact('user','turma','count_aceitos','count_pendentes','alunos_aceitos_array','alunos_pendentes_array'));
     }
-
-
-
-
-
-
-
-
-
 
     public function deletar(Request $req)
     {
@@ -117,9 +99,6 @@ class profSalaController extends Controller
 
     }
 
-
-
-
     public function editar(Request $req)
     {
       $dados = $req->all();
@@ -155,15 +134,8 @@ class profSalaController extends Controller
 
 
     }
-
-
-
     public function aceitarAlunos(Request $req)
     {
-
-
-
-
       $dados = $req->all();
       $aceita_aluno = Sala::where('idTurma',$dados['idTurma'])->where('idAluno',$dados['idAluno'])->update(['situacao' => "aceito"]);
 
@@ -201,8 +173,6 @@ class profSalaController extends Controller
 
 
     }
-
-
 
 
     public function recusarAlunos(Request $req)
@@ -251,9 +221,22 @@ class profSalaController extends Controller
     }
 
 
+    public function adicionarAtividade(Request $req){
+      try{
+       $dados = $req->all();
+       Atividade::create([
+       'idTurma' => $dados['idTurma'],
+       'titulo' => $dados['Titulo'],
+       'start' => $dados['txtDt'],
+       'end' => $dados['txtDtFinal'],
+     ]);
+     return redirect()->route('professor.index');
+      }catch(\Illuminate\Database\QueryException $ex){
 
+        return back()->with('warning', 'Preencha todos os campos!');
+      }
 
-
+}
     public function redirect_sala($idTurma)
     {
 
@@ -266,11 +249,5 @@ class profSalaController extends Controller
 
       return $this->index($request); //funciona mas url fica zuado
     }
-
-
-
-
-
-
 
 }
