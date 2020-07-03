@@ -237,25 +237,56 @@ class profSalaController extends Controller
       }
     }
 
+/*
+    $allowedfileExtension=['jpg','png'];
+    $imagem = $req->file('imagem');
+    $filename = $imagem->getClientOriginalName();
+    $extension = $imagem->getClientOriginalExtension();
+    $check=in_array($extension,$allowedfileExtension);
 
 
+          if($check)
+          {
 
+          $num = Auth::user()->id;
+          $dir = "img/fotos-perfil";
+          $ex = "png";
+          $nomeImagem = $num.".".$ex;
+          $imagem->move($dir,$nomeImagem);
+          $dados['foto_perfil'] = $dir."/".$nomeImagem;
 
+*/
 
     public function adicionarAtividade(Request $req){
       try{
        $dados = $req->all();
-       Atividade::create([
-       'idTurma' => $dados['idTurma'],
-       'titulo' => $dados['Titulo'],
-       'start' => $dados['txtDt'],
-       'end' => $dados['txtDtFinal'],
-     ]);
-     return redirect()->route('professor.index');
-      }catch(\Illuminate\Database\QueryException $ex){
+       $formatosPermitidos = array("png","jpeg","jpg","pdf","gif");
+       $extensao = pathinfo($_FILES['arquivo']['name'],PATHINFO_EXTENSION);
+       if(in_array($extensao,$formatosPermitidos)){
+         $pasta = "img/enviar-atividades/";
+         $temporario = $_FILES['arquivo']['tmp_name'];
+         $novoNome = uniqid().".$extensao";
 
-        dd($ex);
-        return redirect()->route('perfil.index');
+         if(move_uploaded_file($temporario,$pasta.$novoNome)){
+           $dados['arquivo'] = $pasta."/".$novoNome;
+           Atividade::create([
+           'idTurma' => $dados['idTurma'],
+           'titulo' => $dados['Titulo'],
+           'caminhoArquivo' => $dados['arquivo'],
+           'start' => $dados['txtDt'],
+           'end' => $dados['txtDtFinal']
+           ]);
+           return redirect()->route('professor.index');
+         }else{
+           echo "Arquivo invalidor";
+         }
+
+       }
+
+
+
+      }catch(\Illuminate\Database\QueryException $ex){
+        echo $ex;
       }
 }
 

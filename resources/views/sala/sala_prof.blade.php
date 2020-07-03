@@ -95,6 +95,7 @@ if(objDate.getTime() < new Date().getTime()){
     Data Final:
     <input type='text' id='txtDtFinal' name="txtDtFinal" onblur='fctValidaDataFinal;'/>
 
+    <input type="file" name="arquivo">
 
     <div class="input-field">
       <label for="Titulo">Titulo</label>

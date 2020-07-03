@@ -14,9 +14,10 @@ class CreateAtividadesTable extends Migration
     public function up()
     {
         Schema::create('atividades', function (Blueprint $table) {
-            $table->String('idTurma')->primary();
-            $table->String('titulo');
+           $table->primary(['idTurma','caminhoArquivo']);
+            $table->String('idTurma');
             $table->String('caminhoArquivo');
+            $table->String('titulo');
             $table->dateTime('start');
             $table->dateTime('end');
             $table->timestamps();
